@@ -1,0 +1,543 @@
+{% extends 'landing_page/base.html' %}
+{% load static %}
+{% block content %}
+			<!-- banner_section - start
+			================================================== -->
+			<section class="banner_section home_two_banner clearfix">
+				<div class="container">
+					<div class="row align-items-center justify-content-lg-between">
+
+						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 order-last">
+							<div class="banner_image scene">
+								<div class="image_1 wow fadeInUp2" data-wow-delay=".1s">
+									<img class="layer" data-depth="0.2" src="{% static 'landing_page/assets/images/undraw_business_deal_cpi9.svg' %}" alt="image_not_found">
+								</div>
+								<div class="image_2 wow fadeInUp2" data-wow-delay=".2s">
+									<img class="layer" data-depth="0.3" src="{% static 'landing_page/assets/images/undraw_business_deal_cpi9.svg' %}" alt="image_not_found">
+								</div>
+								<!-- <div class="image_3 wow fadeInUp2" data-wow-delay=".3s">
+									<img class="layer" data-depth="0.4" src="{% static 'landing_page/assets/images/undraw_business_deal_cpi9.svg ' %}" alt="image_not_found">
+								</div> -->
+							</div>
+						</div>
+
+						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+							<div class="banner_contant">
+								<h4 class="sub_title wow fadeInUp2" data-wow-delay=".2s">Welcome to Smartrade</h4>
+								<h4 class="item_title text-white wow fadeInUp2" data-wow-delay=".3s">
+									Best Gift Card Trading  Platform
+								</h4>
+								<a class="custom_btn wow fadeInUp2" data-wow-delay=".4s" target="_blank" href="{% url 'registration:sign_in' %}" style="background-color: white;
+								color:#b58326">
+									Trade Gift Card
+									<span style="background-color:#b58326; color: white;"><i class="fal fa-arrow-right"></i></span>
+								</a>
+								<span class="decoration_text wow fadeIn" data-wow-delay=".1s"></span>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</section>
+			<!-- banner_section - end
+			================================================== -->
+
+
+			<!-- feature_section - start
+			================================================== -->
+			<section class="feature_section bg_gray clearfix">
+				<div class="maxw_1780 container">
+					<div class="row no-gutters justify-content-lg-between">
+
+						<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 wow fadeInUp2" data-wow-delay=".1s">
+							<div class="feature_listlayout_boxed2 deco_wrap">
+								<div class="item_icon">
+									<img src="{% static 'landing_page/assets/images/smartrade/sign-in.svg' %}" width="50%" alt="image_not_found">
+								</div>
+								<div class="item_content">
+									<span class="item_type">First Process</span>
+									<h3 class="item_title">Sign Up/Login To Your Account</h3>
+									<p>
+										Create an account or log in to your existing account on this platform to start up a new trade.
+									</p>
+									<a class="text_btn" target="_blank" href="{% url 'registration:sign_in' %}">
+										<span>Signup/Login</span>
+										<i class="far fa-arrow-right"></i>
+									</a>
+								</div>
+
+								<div class="deco_image shape_1">
+									<img src="{% static 'landing_page/assets/images/feature/shape_01.png' %}"  alt="image_not_found">
+								</div>
+								<div class="deco_image shape_2">
+									<img src="{% static 'landing_page/assets/images/feature/shape_02.png' %}" alt="image_not_found">
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 wow fadeInUp2" data-wow-delay=".3s">
+							<div class="feature_listlayout_boxed2 deco_wrap">
+								<div class="item_icon">
+									<img src="{% static 'landing_page/assets/images/smartrade/sent-mail.svg' %}" width="50%" alt="image_not_found">
+								</div>
+								<div class="item_content">
+									<span class="item_type">Second Process</span>
+									<h3 class="item_title">Submit Trade Request</h3>
+									<p>
+										Select gift card brand, the denomination (dollars or pounds) and the quantity. Upload the expected cards and submit trade request.
+									</p>
+									<a class="text_btn" target="_blank" href="{% url 'registration:sign_in' %}">
+										<span>Read More</span>
+										<i class="far fa-arrow-right"></i>
+									</a>
+								</div>
+
+								<div class="deco_image shape_1">
+									<img src="{% static 'landing_page/assets/images/feature/shape_01.png' %}" alt="image_not_found">
+								</div>
+								<div class="deco_image shape_2">
+									<img src="{% static 'landing_page/assets/images/feature/shape_02.png' %}" alt="image_not_found">
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 wow fadeInUp2" data-wow-delay=".5s">
+							<div class="feature_listlayout_boxed2 deco_wrap">
+								<div class="item_icon">
+									<img src="{% static 'landing_page/assets/images/smartrade/money.svg' %}" width="50%" alt="image_not_found">
+								</div>
+								<div class="item_content">
+									<span class="item_type">Last Process </span>
+									<h3 class="item_title">Verification & Payment</h3>
+									<p style="margin-bottom: 10px;">
+										<!-- We confirm the validity of your cards, pay into your account and send you a proof of payment in your dashboard. -->
+										Once your card is confirmed valid payment will be made into the given account.<br>
+									</p>
+									<a class="text_btn" target="_blank" href="{% url 'registration:sign_in' %}">
+										<span>Read More</span>
+										<i class="far fa-arrow-right"></i>
+									</a>
+								</div>
+
+								<div class="deco_image shape_1">
+									<img src="{% static 'landing_page/assets/images/feature/shape_01.png' %}" alt="image_not_found">
+								</div>
+								<div class="deco_image shape_2">
+									<img src="{% static 'landing_page/assets/images/feature/shape_02.png' %}" alt="image_not_found">
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</section>
+			<!-- feature_section - end
+			================================================== -->
+
+			<!-- service_section - start
+			================================================== -->
+			<section class="service_section sec_ptb_130 clearfix">
+				<div class="container">
+
+					<div class="row justify-content-center">
+						<div class="col-lg-8 col-md-8 col-sm-10 col-xs-12">
+							<div class="section_title text-center mb_50 wow fadeInUp2" data-wow-delay=".1s">
+								<h4 class="small_title">Gift Card rates & Pricing</h4>
+								<h2 class="big_title mb-0">
+									Competitive Rates That Favors Customers
+								</h2>
+								<span class="biggest_title">Rates</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mb_80 justify-content-lg-between justify-content-md-center justify-content-sm-center">
+						<div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 wow fadeInUp2" data-wow-delay=".3s">
+							<div class="service_card clearfix">
+								<a class="item_image" target="_blank" href="{% url 'registration:sign_in' %}">
+									<img src="{% static 'landing_page/assets/images/smartrade/amazon.png' %}" alt="image_not_found">
+								</a>
+								<div class="item_content">
+									<span class="item_type">Gift Cards</span>
+									<h3 class="item_title mb-0">Amazon Cards</h3>
+									<a class="icon_btn" target="_blank" href="{% url 'registration:sign_in' %}"><i class="fal fa-arrow-right"></i></a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 wow fadeInUp2" data-wow-delay=".5s">
+							<div class="service_card clearfix">
+								<a class="item_image" target="_blank" href="{% url 'registration:sign_in' %}">
+									<img src="{% static 'landing_page/assets/images/smartrade/gplay.png' %}" alt="image_not_found">
+								</a>
+								<div class="item_content">
+									<span class="item_type">Gift Cards</span>
+									<h3 class="item_title mb-0">Google Play Cards</h3>
+									<a class="icon_btn" target="_blank" href="{% url 'registration:sign_in' %}"><i class="fal fa-arrow-right"></i></a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 wow fadeInUp2" data-wow-delay=".7s">
+							<div class="service_card clearfix">
+								<a class="item_image" target="_blank" href="{% url 'registration:sign_in' %}">
+									<img src="{% static 'landing_page/assets/images/smartrade/sephora.png' %}" alt="image_not_found">
+								</a>
+								<div class="item_content">
+									<span class="item_type">Gift Cards</span>
+									<h3 class="item_title mb-0">Sephora Cards</h3>
+									<a class="icon_btn" target="_blank" href="{% url 'registration:sign_in' %}"><i class="fal fa-arrow-right"></i></a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 wow fadeInUp2" data-wow-delay=".3s">
+							<div class="service_card clearfix">
+								<a class="item_image" target="_blank" href="{% url 'registration:sign_in' %}">
+									<img src="{% static 'landing_page/assets/images/smartrade/nike.png' %}" alt="image_not_found">
+								</a>
+								<div class="item_content">
+									<span class="item_type">Gift Cards</span>
+									<h3 class="item_title mb-0">Nike Cards</h3>
+									<a class="icon_btn" target="_blank" href="{% url 'registration:sign_in' %}"><i class="fal fa-arrow-right"></i></a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 wow fadeInUp2" data-wow-delay=".5s">
+							<div class="service_card clearfix">
+								<a class="item_image" target="_blank" href="{% url 'registration:sign_in' %}">
+									<img src="{% static 'landing_page/assets/images/smartrade/nordstorm.png' %}" alt="image_not_found">
+								</a>
+								<div class="item_content">
+									<span class="item_type">Gift Cards</span>
+									<h3 class="item_title mb-0">Nordstorm Cards</h3>
+									<a class="icon_btn" target="_blank" href="{% url 'registration:sign_in' %}"><i class="fal fa-arrow-right"></i></a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 wow fadeInUp2" data-wow-delay=".7s">
+							<div class="service_card clearfix">
+								<a class="item_image" target="_blank" href="{% url 'registration:sign_in' %}">
+									<img src="{% static 'landing_page/assets/images/smartrade/vanilla.png' %}" alt="image_not_found">
+								</a>
+								<div class="item_content">
+									<span class="item_type">Gift Cards</span>
+									<h3 class="item_title mb-0">Vanilla Cards</h3>
+									<a class="icon_btn" target="_blank" href="{% url 'registration:sign_in' %}"><i class="fal fa-arrow-right"></i></a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 wow fadeInUp2" data-wow-delay=".7s">
+							<div class="service_card clearfix">
+								<a class="item_image" target="_blank" href="{% url 'registration:sign_in' %}">
+									<img src="{% static 'landing_page/assets/images/smartrade/steam.png' %}" alt="image_not_found">
+								</a>
+								<div class="item_content">
+									<span class="item_type">Gift Cards</span>
+									<h3 class="item_title mb-0">Steam Cards</h3>
+									<a class="icon_btn" target="_blank" href="{% url 'registration:sign_in' %}"><i class="fal fa-arrow-right"></i></a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 wow fadeInUp2" data-wow-delay=".7s">
+							<div class="service_card clearfix">
+								<a class="item_image" target="_blank" href="{% url 'registration:sign_in' %}">
+									<img src="{% static 'landing_page/assets/images/smartrade/visa.png' %}" alt="image_not_found">
+								</a>
+								<div class="item_content">
+									<span class="item_type">Gift Cards</span>
+									<h3 class="item_title mb-0">Visa Cards</h3>
+									<a class="icon_btn" target="_blank" href="{% url 'registration:sign_in' %}"><i class="fal fa-arrow-right"></i></a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 wow fadeInUp2" data-wow-delay=".7s">
+							<div class="service_card clearfix">
+								<a class="item_image" target="_blank" href="{% url 'registration:sign_in' %}">
+									<img src="{% static 'landing_page/assets/images/smartrade/american_xpress.png' %}" alt="image_not_found">
+								</a>
+								<div class="item_content">
+									<span class="item_type">Gift Cards</span>
+									<h3 class="item_title mb-0">American Express</h3>
+									<a class="icon_btn" target="_blank" href="{% url 'registration:sign_in' %}"><i class="fal fa-arrow-right"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				
+
+					<!-- <div class="row no-gutters justify-content-lg-between">
+						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 wow fadeIn" data-wow-delay=".3s">
+							<div class="service_split clearfix">
+								<div class="item_content">
+									<div class="service_boxed bg_default_yellow text-center">
+										<div class="item_icon">
+											<i class="fab fa-google fa-4x" style="color: white;"></i>
+											<!-- <img src="assets/images/services/icon_02.png" alt="icon_not_found"> -->
+										<!-- </div>
+										<h3 class="item_title" style="color: white;">Google (uk) </h3> -->
+										<!-- <p style="color: white; font-weight: 500;">$25 - 7000 <br> $25 - 7000 <br>  $25 - 7000   </p> -->
+										
+										
+									<!-- </div>
+								</div>
+								<div class="item_content">
+									<div class="service_boxed  text-center" style="background-color: #5d5a87;">
+										<div class="item_icon">
+											<i class="fab fa-google fa-4x" style="color: white;"></i>
+										
+										</div>
+										<h3 class="item_title" style="color: white;">Google (usa) </h3>
+										
+										
+									</div>
+								</div>
+								</div>
+						</div>
+
+						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 wow fadeIn" data-wow-delay=".4s">
+							<div class="service_split clearfix">
+								<div class="item_content">
+									<div class="service_boxed  text-center" style="background-color: #000;">
+										<div class="item_icon">
+											<i class="fab fa-apple fa-4x" style="color: white;"></i>
+										
+										</div>
+										<h3 class="item_title" style="color: white;">iTunes (usa) </h3>
+											
+										
+									</div>
+								</div>
+								<div class="item_content">
+									<div class="service_boxed  text-center" style="background-color: #8f6d23;">
+										<div class="item_icon">
+											<i class="fab fa-amazon fa-4x" style="color: white;"></i>
+										</div>
+										<h3 class="item_title" style="color: white;">Amazon (uk) </h3>
+										
+										
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 wow fadeIn" data-wow-delay=".5s">
+							<div class="service_split clearfix">
+								<div class="item_content">
+									<div class="service_boxed  text-center" style="background-color: #d19b25;">
+										<div class="item_icon">
+											<i class="fab fa-amazon fa-4x" style="color: white;"></i>
+											</div>
+										<h3 class="item_title" style="color: white;">Amazon (usa) </h3>
+										
+										
+									</div>
+								</div>
+								<div class="item_content">
+									<div class="service_boxed  text-center" style="background-color: #1a1e5d;">
+										<div class="item_icon">
+											<i class="fab fa-steam fa-4x" style="color: white;"></i>
+										</div>
+										<h3 class="item_title" style="color: white;">Steam (uk) </h3>
+											
+										
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 wow fadeIn" data-wow-delay=".6s">
+							<div class="service_split clearfix">
+								<div class="item_content">
+									<div class="service_boxed  text-center" style="background-color: #20ad96;">
+										<div class="item_icon">
+											<i class="fab fa-steam fa-4x" style="color: white;"></i>
+										</div>
+										<h3 class="item_title" style="color: white;">Steam (uk) </h3>
+										</div>
+								</div>
+								<div class="item_content">
+									<div class="service_boxed  text-center" style="background-color: #000;">
+										<div class="item_icon">
+											<i class="fa fa-check fa-4x" style="color: white;"></i>
+											</div>
+										<h3 class="item_title" style="color: white;">Nike (us) </h3>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						
+						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 wow fadeIn" data-wow-delay=".5s">
+							<div class="service_split clearfix">
+								<div class="item_content">
+									<div class="service_boxed  text-center" style="background-color: #b71c1c;">
+										<div class="item_icon">
+											<i class="fab fa-ebay fa-4x" style="color: white;"></i>
+											</div>
+										<h3 class="item_title" style="color: white;">ebay (usa) </h3>
+											
+										
+									</div>
+								</div>
+								<div class="item_content">
+									<div class="service_boxed  text-center" style="background-color: #880e4f;">
+										<div class="item_icon">
+											<i class="fa fa-credit-card fa-4x" style="color: white;"></i>
+										</div>
+										<h3 class="item_title" style="color: white;">Nordstorm (usa) </h3>
+											
+										
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						
+						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 wow fadeIn" data-wow-delay=".5s">
+							<div class="service_split clearfix">
+								<div class="item_content">
+									<div class="service_boxed  text-center" style="background-color: #d19b25;">
+										<div class="item_icon">
+											<i class="fa fa-credit-card fa-4x" style="color: white;"></i>
+											</div>
+										<h3 class="item_title" style="color: white;">Sephora (usa) </h3>
+										
+										
+									</div>
+								</div>
+								<div class="item_content">
+									<div class="service_boxed  text-center" style="background-color: #1a1e5d;">
+										<div class="item_icon">
+											<i class="fa fa-credit-card fa-4x" style="color: white;"></i>
+											</div>
+										<h3 class="item_title" style="color: white;">Vanilla (uk) </h3>
+											
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> -->
+					
+				</div>
+			</section>
+			<section class="cta_section sec_ptb_130 deco_wrap clearfix" style="background-image: url({% static 'landing_page/assets/images/slider6.png' %});">
+				<div class="container">
+					<div class="row align-items-center justify-content-lg-between justify-content-md-center justify-content-sm-center">
+
+						<div class="col-lg-5 col-md-7 col-sm-9 col-xs-12">
+							<div class="cta_image_2 wow fadeIn" data-wow-delay=".1s">
+								<img src="{% static 'landing_page/assets/images/smartrade/giftcard.png' %}" alt="image_not_found">
+							</div>
+						</div>
+
+						<div class="col-lg-6 col-md-7 col-sm-9 col-xs-12">
+							<div class="cta_content ml__30 text-white">
+								<div class="section_title mb_30 wow fadeInUp2" data-wow-delay=".2s">
+									<h4 class="small_title">Needs Any Helps</h4>
+									<h2 class="big_title mb-0 text-white">
+										Always Ready  To Trade With You
+									</h2>
+									<span class="biggest_title">Quote</span>
+								</div>
+								<p class="mb_30 border_left_yellow text-white wow fadeInUp2" data-wow-delay=".3s">
+									Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo
+								</p>
+								<ul class="check_info_list ul_li_block clearfix mb_50 wow fadeInUp2" data-wow-delay=".4s">
+									<li>Smashing Podcast Episode 19 With Andy Bell What Is CUBE ?</li>
+									<li>Inspired Design Decisions With Giovanni Pintori: Publicity Becomes </li>
+									<li>Django Highlights: Wrangling Static Assets And Media Files</li>
+									<li>A Practical Guide To Testing React Applications With Jest</li>
+								</ul>
+								<a class="custom_btn bg_default_orange wow fadeInUp2" data-wow-delay=".5s" target="_blank" href="team.html">
+									meet with us 
+									<span><i class="fal fa-arrow-right"></i></span>
+								</a>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+
+				<div class="deco_image deco_image_1 wow fadeInUp2" data-wow-delay=".1s">
+					<img src="{% static 'landing_page/assets/images/cta/shape_01.png' %}" alt="shape_not_found">
+				</div>
+			</section>
+		
+			<section class="testimonial_section sec_ptb_130 clearfix">
+				<div class="container position-relative">
+
+					<div class="row justify-content-lg-start">
+						<div class="col-lg-6 col-md-7 col-sm-9 col-xs-12">
+							<div class="section_title mb_80 wow fadeInUp2" data-wow-delay=".1s">
+								<h4 class="small_title">Clients Reviews</h4>
+								<h2 class="big_title mb-0">
+									What Our Clients Say About Trading With Us
+								</h2>
+								<span class="biggest_title">Says</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row justify-content-lg-between">
+						<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 order-last">
+							<div class="testimonial_person_image wow fadeInUp2" data-wow-delay=".3s">
+								<img src="{% static 'landing_page/assets/images/smartrade/testimonials.jpg' %}" alt="image_not_found">
+							</div>
+						</div>
+
+						<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+							<div class="creative_testimonial_carousel owl-carousel owl-theme wow fadeInUp2" data-wow-delay=".5s">
+								<!-- {% if testimonials %} -->
+								{% for testimonial in testimonials %}
+								<div class="item">
+									<div class="testimonial_primary">
+										<div class="content_wrap">
+											<p>
+												{{testimonial.testimonialText}}
+											</p>
+											<span class="quote_icon">
+												<img src="{% static 'landing_page/assets/images/avatar.png' %}" alt="icon_not_found">
+											</span>
+										</div>
+										<div class="hero_info_wrap">
+											<div class="hero_thumbnail">
+												<img src="{% static 'landing_page/assets/images/avatar.png' %}" alt="icon_not_found">
+											</div>
+											<div class="hero_info">
+												<h3 class="hero_name">{{testimonial.user.username}}</h3>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+								{% endfor %}
+								<!-- {% endif %} -->
+
+							</div>
+						</div>
+					</div>
+
+					<div class="orange_shape wow fadeInUp2" data-wow-delay=".1s"></div>
+
+				</div>
+				<script src="https://apps.elfsight.com/p/platform.js" defer></script>
+<div class="elfsight-app-2274a582-fe91-4a0a-acea-e0c382c52642"></div>
+			</section>
+			<!-- testimonial_section - end
+			================================================== -->
+
+
+
+
+		</main>
+	{% endblock %}
+		

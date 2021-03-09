@@ -1,0 +1,108 @@
+{% extends 'tradersPanel/base.html' %}
+{% load static %}
+{% block content %}
+{% load humanize %}
+
+<!-- Left Sidebar End -->
+<!-- Body Start -->
+	<div class="sa4d25">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<h2 class="st_title"><i class="uil uil-star"></i> All Trades</h2>
+                  <marquee><h5> Once your transaction is confirmed Successfull, Please <a href="{% url 'tradersPanel:send_testimonial' %}">click here</a> to send a testimonial</h5></marquee>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<div class="student_reviews">
+						<div class="row">
+							<div class="col-lg-12	">
+								<!-- <div class="col-lg-7"> -->
+								<div class="review_right">
+									
+								</div>
+ 
+                              <div class="table-responsive">
+                                 <table class="table table-border   ucp-table">
+                                    <thead class="thead-s">
+                                      <tr>
+                                         <th>#</th>
+                                         <th>Reference</th>
+                                         <th>Traders Name</th>
+                                         <th>Traders Email</th>
+                                         <th>Trade Total Amount</th>
+                                         <th>Trade Status</th>
+                                         <th>View Trade</th>
+                                      </tr>
+                                   </thead>
+                                   <tbody>
+
+
+
+                                   {% if trades %}
+
+
+                                   {% for trade in trades %}
+
+                                      <tr>
+
+                                            <td>{{ forloop.counter }}</td>
+                                         <td>{{trade.reference}}</td>
+                                          <td>{{trade.user.username}}</td>
+                                           <td>{{trade.user.email}}</td>
+                                            <td>N{{trade.total_amount}}</td>
+                                            <td>
+                                               {% if trade.status == '1' %}
+                                                  <b class="course_pending" style="color: rgb(216, 216, 19);">Pending</b>
+                                               {% elif trade.status == '2' %}
+
+                                             <b class="course_success" style="color: green;">Successfull</b>
+
+                                               {% else %}
+                                                   <b class="course_active" style="color: red;">Failed</b>
+                                               {% endif %}
+                                            </td>
+                                            <td >
+                                         <a href="{% url 'tradersPanel:view_trade_comment' trade.id %}" title="Edit" class="gray-s"><i class="uil uil-eye"></i></a>
+                                       
+                                      </td>
+                                     </tr>
+                                      
+                                      {% endfor %}
+                                   {% endif %}
+
+                                   </tbody>
+                                </table>
+                                {% if is_paginated %}
+                                <ul class="pagination pagination-lg">
+                                   {% if page_obj.has_previous %}
+                                      <li style="padding: 8px; border-color: 1px solid #d1b000;"><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                                   {% else %}
+                                      <li class="disabled"  style="padding: 8px; border: 1px solid #d1b000;"><span>&laquo;</span></li>
+                                   {% endif %}
+                                   {% for i in paginator.page_range %}
+                                      {% if page_obj.number == i %}
+                                      <li class="active"  style="padding: 8px; border: 1px solid #d1b000; background-color: #d1b000;"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                      {% else %}
+                                      <li  style="padding: 8px; border: 1px solid #d1b000;"><a href="?page={{ i }}">{{ i }}</a></li>
+                                      {% endif %}
+                                   {% endfor %}
+                                   {% if page_obj.has_next %}
+                                      <li  style="padding: 8px; border: 1px solid #d1b000;"><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                                   {% else %}
+                                      <li class="disabled"  style="padding: 8px;border: 1px solid #d1b000;"><span>&raquo;</span></li>
+                                   {% endif %}
+                                </ul>
+                             {% endif %}
+                              </div>
+                    
+								 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+ 
+
+{% endblock %}

@@ -1,0 +1,149 @@
+﻿{% extends 'tradersPanel/base.html' %}
+{% load static %}
+
+{% block content %}
+	<!-- Body Start -->
+		<div class="sa4d25">
+			<div class="container-fluid">			
+				<div class="row">
+					<div class="col-lg-12">
+						<h2 class="st_title"><i class='uil uil-cog'></i> Setting</h2>
+						<div class="setting_tabs">
+							<ul class="nav nav-pills mb-4" id="pills-tab" role="tablist">
+								<li class="nav-item">
+									<a class="nav-link active" id="pills-account-tab" data-toggle="pill" href="#pills-account" role="tab" aria-selected="true">Account</a>
+								</li>
+								
+							</ul>
+						</div>
+						<div class="tab-content" id="pills-tabContent">
+							<form method="POST" enctype="multipart/form-data">
+								{% csrf_token %}						
+							<div class="tab-pane fade show active" id="pills-account" role="tabpanel" aria-labelledby="pills-account-tab">
+								<div class="account_setting">
+									<h4>Your Smartrade Account</h4>
+									<p>This is your public presence on Smartrade. You need to update your account when necessary</p>
+									<div class="basic_profile">
+										<div class="basic_ptitle">
+											<h4>Basic Profile</h4>
+											<p>Add information about yourself</p>
+											{% if form.errors %}
+											<div id="errors">
+												<div class="inner">
+													<p>There were some errors in the information you entered. Please correct the following:</p>
+													<ul>
+														{% for field in form %}
+															{% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+														{% endfor %}
+													</ul>
+												</div>
+											</div>
+											<!-- /Error messaging -->
+										{% endif %}
+										</div>
+										<div class="basic_form">
+											<div class="row">
+														
+												<div class="col-lg-8">
+													
+														<!-- <div class="form-group1 mt-30 col-md-4">
+															<label for="file5">Add Profile Image</label>
+															<div class="image-upload-wrap">
+																<input class="file-upload-input" id="file5" type="file" onchange="readURL(this);" accept="image/*">
+																<div class="drag-text">
+																  <i class="fas fa-cloud-upload-alt"></i>
+																  <h4 style="text-align: center;">Upload a profile image</h4>
+																</div>
+															</div>															
+														</div>  -->
+													
+													<div class="row">
+														
+														<div class="col-lg-6">
+															<div class="ui search focus mt-30">
+																<div class="ui left icon input swdh11 swdh19">
+																	<input class="prompt srch_explore" type="text" name="first_name" value="{{update_data.first_name}}" id="id[name]" required="" maxlength="64" placeholder="First Name">															
+																</div>
+															</div>
+														</div>
+														<div class="col-lg-6">
+															<div class="ui search focus mt-30">
+																<div class="ui left icon input swdh11 swdh19">
+																	<input class="prompt srch_explore" type="text" name="last_name"  value= "{{update_data.last_name}}" id="id[surname]" required="" maxlength="64" placeholder="Last Name">															
+																</div>
+															</div>
+														</div>
+														
+														<div class="col-lg-6">
+															<div class="ui search focus mt-30">
+																<div class="ui left icon input swdh11 swdh19">
+																	<input class="prompt srch_explore" type="number" value= "{{update_data.phone_number}}" name="phone_number"  id="id[surname]" required="" maxlength="64" placeholder="Phone Number">															
+																</div>
+															</div>
+														</div>
+														<div class="col-lg-6">
+															<div class="ui search focus mt-30">
+																<div class="ui left icon input swdh11 swdh19">
+																	<input class="prompt srch_explore" type="text" name="profession" value="{{update_data.profession}}"  id="id[name]" required="" maxlength="64" placeholder="Profession">															
+																</div>
+															</div>
+														</div>
+														
+														<div class="col-lg-12">
+															<div class="divider-1"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="basic_profile1">
+										<div class="basic_ptitle">
+											<h4>Bank Account Details</h4>
+										</div>
+										<div class="basic_form">
+											<div class="row">
+												<div class="col-lg-8">
+													<div class="row">
+														<div class="col-lg-9">
+															<div class="ui search focus mt-30">
+																<div class="ui left icon input swdh11 swdh19">
+																	<input class="prompt srch_explore" type="text" name="bank_accnt_name" value="{{update_data.bank_accnt_name}}" id="id[name]" required="" maxlength="" placeholder="Account Name">															
+																</div>
+															</div>
+														</div>
+														<div class="col-lg-3">
+															<div class="ui search focus mt-30">
+																<div class="ui left icon input swdh11 swdh19">
+																	<input class="prompt srch_explore" type="text" name="bank_name"  value="{{update_data.bank_name}}" id="id[surname]" required="" maxlength="64" placeholder="Bank Name">															
+																</div>
+															</div>
+														</div>
+														<div class="col-lg-12">
+															<div class="ui search focus mt-30">
+																<div class="ui left icon input swdh11 swdh19">
+																	<input class="prompt srch_explore" type="number" name="bank_accnt_number" value="{{update_data.bank_accnt_number}}" id="id_headline" required="" maxlength="60" placeholder="Bank Account Number">															
+																	<div class="form-control-counter" data-purpose="form-control-counter">36</div>
+																</div>
+																<!-- <div class="help-block">Add a professional headline like, "Engineer at Cursus" or "Architect."</div> -->
+															</div>
+														</div>
+														
+														<div class="col-lg-12">
+															<div class="divider-1"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<button class="save_btn" type="submit">Save Changes</button>
+								</div>
+							</form>
+							</div>
+					
+						</div>
+					</div>						
+				</div>
+			</div>
+		{% endblock %}

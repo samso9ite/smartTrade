@@ -1,0 +1,88 @@
+{% extends 'adminPanel/base.html' %}
+{% load static %}
+{% block content %}
+{% load humanize %}
+
+<!-- Left Sidebar End -->
+<!-- Body Start -->
+	<div class="sa4d25">
+		<div class="container-fluid">
+			<div class="sa4d25">
+				<div class="container-fluid">			
+					<div class="row">
+						<div class="col-lg-12">	
+							<h2 class="st_title"><i class="uil uil-card-atm"></i> All Card Rate</h2>
+						</div>					
+					</div>				
+					<div class="row">
+						<div class="col-12">
+							<div class="mt-10">
+								<div class="card_dash1">
+									<div class="card_dash_left1">
+										<i class="uil uil-award"></i>
+										<h1>Create a new card rate</h1>
+									</div>
+									<div class="card_dash_right1">
+										<a href="{% url 'adminPanel:set_card_rate' %}"><button class="create_btn_dash">New Card Rate</button></a>
+									</div>
+								</div>
+								<div class="table-cerificate">
+									<div class="table-responsive">
+										<table class="table ucp-table" id="content-table">
+											<thead class="thead-s">
+												<tr>
+													<th scope="col">Item No.</th>
+													<th scope="col">Card Type</th>
+													<th scope="col">Card Currency</th>
+													<th scope="col">Card Rate</th>
+													<th scope="col">Edit Rate</th>
+													<!-- <th scope="col">Delete Rate</th> -->
+												</tr>
+											</thead>
+											<tbody>
+												{% if card_rate %}
+												{% for rate in card_rate %}
+													<tr>
+														<td class="text-center">{{rate.id}}</td>
+														<td class="cell-ta">{{rate.card_type.name}}</td>
+														<td class="" style="text-align: left;">{{rate.card_curr}}{{rate.card_amt}}</td>
+														<td class="text-left">{{rate.rate}}</td>
+														<td class="text-left"><a href="{% url 'adminPanel:edit_rate' rate.id %}" title="Delete" class="gray-s"><i class="uil uil-edit-alt"></i></a></td>
+														<!-- <td class="text-left"><a href="{% url 'adminPanel:delete_rate' rate.id %}" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a></td> -->
+														
+													</tr>
+												{% endfor %}
+												{% endif %}
+											
+											</tbody>
+										</table>
+										{% if is_paginated %}
+                                    <ul class="pagination pagination-lg">
+                                       {% if page_obj.has_previous %}
+                                          <li style="padding: 8px; border-color: 1px solid #d1b000;"><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                                       {% else %}
+                                          <li class="disabled"  style="padding: 8px; border: 1px solid #d1b000;"><span>&laquo;</span></li>
+                                       {% endif %}
+                                       {% for i in paginator.page_range %}
+                                          {% if page_obj.number == i %}
+                                          <li class="active"  style="padding: 8px; border: 1px solid #d1b000; background-color: #d1b000;"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                          {% else %}
+                                          <li  style="padding: 8px; border: 1px solid #d1b000;"><a href="?page={{ i }}">{{ i }}</a></li>
+                                          {% endif %}
+                                       {% endfor %}
+                                       {% if page_obj.has_next %}
+                                          <li  style="padding: 8px; border: 1px solid #d1b000;"><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                                       {% else %}
+                                          <li class="disabled"  style="padding: 8px;border: 1px solid #d1b000;"><span>&raquo;</span></li>
+                                       {% endif %}
+                                    </ul>
+                                    {% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+         </div>
+{% endblock %}

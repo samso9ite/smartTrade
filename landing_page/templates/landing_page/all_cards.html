@@ -1,0 +1,90 @@
+{% extends 'landing_page/base.html' %}
+{% load static %}
+{% block content %}
+			<!-- breadcrumb_section - start
+			================================================== -->
+			<section class="breadcrumb_section d-flex align-items-center clearfix" data-background="{% static 'landing_page/assets/images/sub_banner1.jpeg' %}">
+				<div class="container">
+					<div class="row align-items-center justify-content-lg-between">
+						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 wow fadeInLeft" data-wow-delay=".1s">
+							<h1 class="page_title mb-0">All Card </h1>
+						</div>
+
+						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 wow fadeInRight" data-wow-delay=".1s">
+							<ul class="breadcrumb_nav ul_li_right clearfix">
+								<li><a href="{% url 'landing_page:home_page' %}">Home</a></li>
+								<li>All Card</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- breadcrumb_section - end
+			================================================== -->
+
+
+			<!-- service_section - start
+			================================================== -->
+			<section class="service_section sec_ptb_130 bg_gray clearfix">
+				<div class="container">
+
+					<div class="row justify-content-center">
+						<div class="col-lg-8 col-md-8 col-sm-10">
+							<div class="section_title text-center mb_50 wow fadeInUp2" data-wow-delay=".1s">
+								<h4 class="small_title">What We Offer</h4>
+								<h2 class="big_title mb-0">
+									Check out all cards
+								</h2>
+								<span class="biggest_title">Cards</span>
+							</div>
+						</div>
+					</div>
+<style>
+	.funfact_bordered .funfact_item {
+    display: flex;
+    min-height: 4px !important;
+	}
+
+	.custom_btn {
+  	  	padding: 3px 35px;
+	}
+</style>
+				
+					<div class="container">
+						<div class="funfact_wrap funfact_bordered">
+							{% if cards %}
+                                    {% for card in cards %}
+							<div class="funfact_item text-center wow fadeInUp2" data-wow-delay=".1s">
+								<div class="content_wrap">
+									<div class="item_icon">
+										<span class="bg_default_orange">
+											<i class="fa fa-credit-card"></i>
+										</span>
+									</div>
+									<h5>{{card.name}}</h5>
+											<br>
+												<a class="custom_btn bg_default_yellow" href="{% url 'landing_page:card_rate' id=card.id %}">
+													Check Rate
+													<span><i class="fal fa-arrow-right"></i></span>
+												</a>
+																
+								</div>
+							</div>
+							{% endfor %}
+							{% endif %}
+
+						</div>
+					</div>
+			</section>
+			<!-- service_section - end
+			================================================== -->
+
+
+		</main>
+		<!-- main body - end
+		================================================== -->
+
+
+		<!-- footer_section - start
+		================================================== -->
+	{% endblock %}

@@ -1,0 +1,151 @@
+{% extends 'adminPanel/base.html' %}
+{% load static %}
+{% block content %}
+	<!-- Body Start -->
+		<div class="sa4d25">
+			<div class="container-fluid">			
+				<div class="row">
+					<div class="col-lg-8">
+						{% if 'set_card_rate' in request.path %}
+							<h2 class="st_title"><i class="uil uil-comment-info-alt"></i>Create a new Card Rate</h2>
+						{% else %}
+							<h2 class="st_title"><i class="uil uil-comment-info-alt"></i>Update Card Rate</h2>
+						{% endif %}
+						<div class="membership_chk_bg">
+								<div class="checkout_title">
+									<h4>Fill in necessary fields</h4>
+									<img src="images/line.svg" alt="">
+								</div>
+								<div class="checkout-tabs">
+									<ul class="nav nav-tabs" id="myTab" role="tablist">
+										<li class="nav-item">
+											<a href="#credit-method-tab" id="credit-tab" class="nav-link active" data-toggle="tab"><i class="uil uil-card-atm check_icon5"></i>
+												{% if 'set_card_rate' in request.path %}
+													Set New Card Rate
+												{% else %}
+													Edit Card Rate
+												{% endif %}
+												</a>
+										</li>
+										
+									</ul>									
+								</div>
+								<div class="tab-content" id="myTabContent">
+									<div class="tab-pane fade show active" id="credit-method-tab" role="tabpanel" aria-labelledby="credit-tab">
+										
+										{% if form.errors %}
+							<!-- Error messaging -->
+							<div id="errors">
+								<div class="inner">
+									<p>There were some errors in the information you entered. Please correct the
+										following:</p>
+									<ul>
+										{% for field in form %}
+										{% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>
+										{% endif %}
+										
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+							<!-- /Error messaging -->
+							{% endif %}
+
+							{% if messages %}
+								<ul class="messages">
+									{% for message in messages %}
+									
+										<li class="message.tags">
+											<div class="alert alert-success alert-dismissible">
+												<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+												<strong>{{message}}</strong> 	
+											  </div></li>
+									{% endfor %}
+								</ul>
+							{% endif %}
+
+										</div>
+										<form method="POST">
+											{% csrf_token %}
+											<!-- {{form}} -->
+											<div class="row"> 
+												{% if 'set_card_rate' in request.path %}
+													<div class="col-md-6">	
+														<div class="lbel25 mt-30">
+															<label>Select Card Type</label>
+															<select class="ui hj145 dropdown cntry152 prompt srch_explore" value="{{object.card_type}}" name="card_type">
+																{% for card in cards %}
+																	<option value="{{card.id}}">{{card}}</option>
+																{% endfor %}
+															</select>
+														</div>										
+													</div>
+												{% else %}
+													<div class="col-md-6">
+														<div class="ui search focus mt-30 lbel25">
+															<label>Card Type</label>
+															<div class="ui left icon input swdh11 swdh19">	
+																<input class="prompt srch_explore" type="text" name="card_type" maxlength="4" value="{{object.card_type}}" readonly placeholder="Amount of Card">
+																<!-- <select class="ui hj145 dropdown cntry152 prompt srch_explore" value="{{object.card_type}}" name="card_type">
+																	{% for card in cards %}
+																		<option value="{{card.id}}">{{card}}</option>
+																	{% endfor %}
+																</select> -->
+															</div>
+														</div>
+													</div>
+												{% endif %}
+
+												<div class="col-md-6">	
+													<div class="lbel25 mt-30">
+														<label>Card Currency</label>
+														<select class="ui hj145 dropdown cntry152 prompt srch_explore" value="{{object.card_curr}}" name="card_curr">
+															<option value="">Card Currency</option>
+															<option value="UK">Pounds</option>
+															<option value="$">Dollars($)</option>
+															<option value="€">Euro(€)</option>
+															<option value="C$">Canadian Dollar(C$)</option>
+															<option value="AUD">Australian Dollar</option>
+															<option value="NZD">Neitherland Dollar</option>
+															
+														</select>
+													</div>										
+												</div>
+											
+												<div class="col-md-6">
+													<div class="ui search focus mt-30 lbel25">
+														<label>Amount</label>
+														<div class="ui left icon input swdh11 swdh19">	
+															<input class="prompt srch_explore" type="text" name="card_amt" value="{{object.card_amt}}" maxlength="" placeholder="Amount of Card">
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="ui search focus mt-30 lbel25">
+														<label>Card Rate</label>
+														<div class="ui left icon input swdh11 swdh19">	
+															<input class="prompt srch_explore"  type="text" value="{{object.rate}}" name="rate" maxlength="" placeholder="Selling Rate">
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="ui form checkbox_sign cp_458">
+														<div class="inline field">
+															<div class="ui checkbox mncheck checked">
+																<br>
+																<label>Set Rate Status <span class="filter__counter"></span> </label>
+																<input type="checkbox" name="is_active" tabindex="0" class="hidden" {% if object.is_active %} checked {% endif %}>
+															</div>  
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-12">
+													<button class="add_crdit_btn mt-50" type="submit">Add Card</button>
+												</div>
+											</div>	
+										</form>
+						</div>						
+					</div>						
+				</div>
+			</div>
+	{% endblock %}

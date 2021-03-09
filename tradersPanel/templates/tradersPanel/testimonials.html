@@ -1,0 +1,30 @@
+﻿{% extends 'tradersPanel/base.html' %}
+{% load static %}
+{% block content %}
+	<!-- Body Start -->
+		<div class="sa4d25">
+			<div class="container-fluid">			
+				<div class="row">
+					<div class="col-lg-12">
+						<h2 class="st_title"><i class="uil uil-comment-info-alt"></i> Send a Testimonial</h2>
+						<form method="POST">
+							{% csrf_token %}
+							{{form.errors}}
+						<div class="row">
+							<div class="col-lg-6 col-md-8">
+			 
+								<div class="ui search focus mt-30">																
+									<div class="ui form swdh30">
+										<div class="field">
+											<textarea rows="6" name="testimonialText" id="id_about" placeholder="Enter your testmonial here"></textarea>
+										</div>
+									</div>
+					 
+								<button class="save_btn" type="submit">Send a Testimonial</button>
+							</div>
+							</form>
+						</div>						
+					</div>						
+				</div>
+			</div>
+	{% endblock %}

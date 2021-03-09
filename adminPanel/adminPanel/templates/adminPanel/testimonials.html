@@ -1,0 +1,61 @@
+﻿{% extends 'adminPanel/base.html' %}
+{% load static %}
+{% block content %}
+{% load humanize %}
+
+<!-- Left Sidebar End -->
+<!-- Body Start -->
+	<div class="sa4d25">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<h2 class="st_title"><i class="uil uil-star"></i> All Testimonials</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<div class="student_reviews">
+						<div class="row">
+							<div class="col-lg-9	">
+								<!-- <div class="col-lg-7"> -->
+								<div class="review_right">
+									
+								</div>
+								{% for testimonial in testimonials %}
+									<div class="review_all120">
+										<div class="review_item_course_title">
+											<a href="#">testimonial from {{testimonial.user.username}} </a>
+										</div>
+										<div class="review_item">
+											<div class="review_usr_dt">
+												<img src="{% static 'images/left-imgs/img-1.jpg' %}" alt="">
+												<div class="rv1458">
+													<h4 class="tutor_name1">{{testimonial.user.username}}</h4>
+												 
+												</div>
+											</div>
+											{% comment %} <div class="rating-box mt-20">
+												<span class="rating-star full-star"></span>
+												<span class="rating-star full-star"></span>
+												<span class="rating-star full-star"></span>
+												<span class="rating-star full-star"></span>
+												<span class="rating-star half-star"></span>
+											</div> {% endcomment %}
+											<p class="rvds10">{{testimonial.testimonialText}}</p> 
+											{% if testimonial.status %}
+												<button class="save_btn" type="submit">Approved</button>
+											{% else %}
+												<a href="{% url 'adminPanel:approve_testimonial' id=testimonial.id %}"><button class="save_btn" type="submit">Approve Testimonial</button></a>
+											{% endif %}
+										</div>
+									
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+ 
+
+{% endblock %}

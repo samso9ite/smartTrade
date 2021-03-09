@@ -1,0 +1,187 @@
+﻿{% extends 'tradersPanel/base.html' %}
+{% block content %}
+{% load static %}
+		<!-- Body Start -->
+	<!-- Body Start -->
+	
+		<div class="sa4d25">
+			<div class="container-fluid">			
+				<div class="row">
+					<div class="col-lg-12">	
+						<h2 class="st_title"><i class="uil uil-file-alt"></i> New Trade</h2>
+						<h4>Pick the quantity of trades per card type.
+							Kindly omit any card you are not selling.</h4>
+					</div>					
+				</div>				
+				<div class="row">					
+					
+					<div class="col-lg-12 col-md-12">
+						<div class="table-responsive mt-30">
+							<table class="table ucp-table earning__table" id="content-table">
+								<thead class="thead-s">
+									<tr>
+										<th scope="col">Card Type</th>
+										<th scope="col">Card Currency</th>
+										<th scope="col">Selling Rate</th>
+										<th scope="col">Qty</th>
+										<th scope="col">Sum</th>	
+										<th scope="col">Image</th>																		
+									</tr>
+								</thead>
+								<tbody>
+								{% for card in cards %}
+									<tr>										
+										<td>
+										 	{{card.card_type.name}}
+										</td>	 
+										<td>{{card.card_curr}}{{card.card_amt}}</td>
+										<td>{{card.rate}}</td>	
+										<td><input type="number" card-id="{{card.id}}" card-rate="{{card.rate}}" class="quantity"   id="quantity{{card.id}}" style="border-left: 0px; border-right: 0px; border-top: 0px;" placeholder="0"></td>	
+										<td>N<span id="amount{{card.id}}">0</span></td>		
+										<td><input type="file" id="image{{card.id}}" style="border-left: 0px; border-right: 0px; border-top: 0px;" multiple placeholder="choose a file"></td>	
+									</tr>
+								{% endfor %}
+								</tbody>				
+							</table>
+
+						
+							</div>
+						</div>
+				</div>
+		</div>
+				<div class="sa4d25" style="" >
+					<div class="container-fluid">			
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="membership_chk_bg">
+									<h4 style="color: #d1b000;">Total Expected: N<b id="total_amount">0</b> </h4>
+										{% if bank_details %}
+											<h4 style="color: #d1b000;">Use Default Account Details:</h4>
+											<h5>Account Name: <b>{{bank_details.bank_accnt_name}}</b></h5>
+											<h5>Account Number:<b> {{bank_details.bank_accnt_number}} </b></h5>
+											<h5>Bank Name : <b> {{bank_details.bank_name}} </b></h5>
+											<label><b><span style="color: #d1b000;">Please Check the box if using default card details</span></b></label>
+											<input class="prompt srch_explore" type="checkbox" id="default_accnt" value="true" required maxlength="64" placeholder="">															
+								
+										{% endif %}
+								</div>
+							</div>
+
+							<div class="col-lg-6">
+								<div class="membership_chk_bg">
+									<h4 style="color: #d1b000;"> Use Another Bank Details</h4>
+									<p style="margin-bottom: 25px;"><b>Please fill in the necessary details if not using default account details</b></p>
+										<div class="ui left icon input swdh11 swdh19">
+											<input class="prompt srch_explore" type="text" id="accnt_name"  value="" id="id_email" required="false" maxlength="64" placeholder="Bank Account Name">															
+										</div><br><br>
+										<div class="ui left icon input swdh11 swdh19">
+											<input class="prompt srch_explore" type="text" value="" id="accnt_num" required="false" maxlength="64" placeholder="Bank Account Number">	
+										</div>
+										<br><br>
+										<div class="ui left icon input swdh11 swdh19">
+											<input class="prompt srch_explore" type="text"  value="" id="bank_name" required="false" maxlength="64" placeholder="Bank Name">															
+										</div>		
+									</div>	</h4>
+								</div>
+
+								<div class="col-lg-6 " style="text-align: center;">
+									<button class="add_crdit_btn mt-50" type="submit"  id="submitBtn" onclick="submitForm()">Create Trade</button>
+								</div>
+							</div>
+							</div>
+
+							<style>
+								
+							</style>
+							</div>
+							
+						</div>
+
+					<script>
+
+	function submitForm(){
+		var all_cards = []
+		var reuest_data = []
+		var has_quantity = false
+		var reference= Math.floor(100000 + Math.random() * 900000)
+
+	   //get all avalible card ID.....TODO this can be optimized...PENDING
+		{% for card  in cards %}
+		    all_cards.push({
+				  "id":{{card.id}},
+				  "price":{{card.rate}}
+			  })
+		{% endfor %} 
+
+		// console.log(all_cards)
+			var bank_name = $('#bank_name').val()
+			var bank_accnt_num = $('#accnt_num').val()
+			var bank_accnt_name = $('#accnt_name').val()
+			var default_accnt = $('#default_accnt:checked').val()
+			var total_amount = $('#total_amount').html()
+			console.log(total_amount)
+			var api_response = all_cards.map((value)=>{
+			$('#submitBtn').text("Processing....").attr("disabled", true);
+
+			
+			var quantity = $('#quantity'+value.id).val()
+			if(quantity.length !== 0){
+
+				has_quantity = true
+				var fd = new FormData();
+				var image = $('#image'+value.id)[0].files;
+
+				if(image.length <= 0){
+					toastr.error("please upload a card image")
+					$('#submitBtn').text("Create Trade").attr("disabled", false);
+					return false
+				}
+
+				// console.log(bank_name)
+
+				// fd.append('image[]',image);
+				fd.append('price',value.price);
+				fd.append('quantity',parseInt(quantity));
+				fd.append('trade_card',value.id);
+				fd.append('reference',reference);
+				fd.append('bank_name',bank_name);
+				fd.append('bank_accnt_num',bank_accnt_num);
+				fd.append('bank_accnt_name',bank_accnt_name);
+				fd.append('default_accnt',default_accnt);
+				fd.append('total_amount',total_amount);
+				$.each($("#image"+value.id)[0].files, function(i, file) {
+					fd.append("image[]", file);
+				});
+				
+				//sent to server to upload
+			  $.ajax({
+              url: "{% url 'tradersPanel:create_trade_api' %}",
+              type: 'post',
+              data: fd,
+              contentType:false,
+              processData: false,
+              success: function(response){
+					  $('#submitBtn').text("Create Trade").attr("disabled", false);
+					  $('#quantity'+value.id).val(0)
+					  $('#amount'+value.id).html(0)
+					  $('#image'+value.id).html(0)
+					  toastr.success("Trade Created")
+              },
+             });
+			 
+			}
+		})
+
+		if(!has_quantity){
+			$('#submitBtn').text("Create Trade").attr("disabled", false);
+			toastr.error('Upload at least one card')
+		}
+ 
+		
+	}
+
+	</script>
+
+	{% endblock %}
+
+
