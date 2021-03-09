@@ -1,0 +1,305 @@
+﻿{% extends 'adminPanel/base.html' %}
+{% load static %}
+{% block content %}
+{% load humanize %}
+
+<!-- Left Sidebar End -->
+<!-- Body Start -->
+		<div class="sa4d25">
+			<div class="container-fluid">			
+				<div class="row">
+					<div class="col-lg-12">	
+						<h2 class="st_title"><i class="uil uil-apps"></i> Admin Dashboard</h2>
+					</div>
+					<div class="col-xl-4 col-lg-6 col-md-6">
+						<div class="card_dash">
+							<div class="card_dash_left">
+								<h5>Total Users</h5>
+								<h2>{{total_users}}</h2>
+								<span class="crdbg_1">New </span>
+							</div>
+							<div class="card_dash_right">
+								<img src="images/dashboard/promotion.svg" alt="">
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-4 col-lg-6 col-md-6">
+						<div class="card_dash">
+							<div class="card_dash_left">
+								<h5>Total Transactions</h5>
+								<h2>{{total_transactions}}</h2>
+								<span class="crdbg_2">New </span>
+							</div>
+							<div class="card_dash_right">
+								<img src="images/dashboard/online-course.svg" alt="">
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-4 col-lg-6 col-md-6">
+						<div class="card_dash">
+							<div class="card_dash_left">
+								<h5>Pending Transactions</h5>
+								<h2>{{pending_transactions}}</h2>
+								<span class="crdbg_3">New 5</span>
+							</div>
+							<div class="card_dash_right">
+								<img src="images/dashboard/online-course.svg" alt="">
+							</div>
+						</div>
+					</div>
+				
+					<div class="col-md-12">
+						<div class="card_dash1">
+							<div class="card_dash_left1">
+								<i class="uil uil-book-alt"></i>
+								<h1> Create New Gift Card</h1>
+							</div>
+							<div class="card_dash_right1">
+								<button class="create_btn_dash" onclick="window.location.href = '{% url "adminPanel:admin_create_card" %}';">Create New Card</button>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						
+						<div class="my_courses_tabs">
+							<div class="col-lg-12">	
+								<h2 class="st_title"><i class="uil uil-apps"></i> Trade History</h2>
+							</div>
+							<ul class="nav nav-pills my_crse_nav" id="pills-tab" role="tablist">
+								<li class="nav-item">
+									<a class="nav-link active" id="pills-my-courses-tab" data-toggle="pill" href="#pills-my-courses" role="tab" aria-controls="pills-my-courses" aria-selected="true"><i class="uil uil-book-alt"></i>All Trades</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="pills-my-purchases-tab" data-toggle="pill" href="#pills-my-purchases" role="tab" aria-controls="pills-my-purchases" aria-selected="false"><i class="uil uil-download-alt"></i>Successfull Trades</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="pills-upcoming-courses-tab" data-toggle="pill" href="#pills-upcoming-courses" role="tab" aria-controls="pills-upcoming-courses" aria-selected="false"><i class="uil uil-upload-alt"></i>Pending Trades</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="pills-failed-courses-tab" data-toggle="pill" href="#pills-failed-courses" role="tab" aria-controls="pills-failed-courses" aria-selected="false"><i class="uil uil-upload-alt"></i>Failed Trades</a>
+								</li>
+							</ul>
+							<div class="tab-content" id="pills-tabContent">
+								<div class="tab-pane fade show active" id="pills-my-courses" role="tabpanel">
+									<div class="table-responsive mt-30">
+										<table class="table ucp-table">
+											<thead class="thead-s">
+												<tr>
+													<th class="text-center" scope="col">Trade ID.</th>
+													<th class="text-center" scope="col">Publish Date</th>
+													<th class="text-center" scope="col">Traders Name</th>
+													<th class="text-center" scope="col">Traders Email</th>
+													<th class="text-center" scope="col">Total Amount</th>
+													<th class="text-center" scope="col">Status</th>
+													<th class="text-center" scope="col">Action</th>
+												</tr>
+											</thead>
+											<tbody>
+												{% for trade in all_trades %}
+												<tr>
+													<td class="text-center">{{trade.reference}}</td>
+													<td class="text-center">{{trade.created_at | date}}</td>
+													<td class="text-center">{{trade.user.username}}</td>
+													<td class="text-center">{{trade.user.email}}</td>
+													<td class="text-center">{{trade.total_amount}}</td>
+													<td class="text-center">
+														{% if trade.status == '1' %}
+														   <b class="course_pending" style="color: rgb(216, 216, 19);">Pending</b>
+														{% elif trade.status == '2' %}
+		
+													  <b class="course_success" style="color: green;">Successfull</b>
+		
+														{% else %}
+															<b class="course_active" style="color: red;">Failed</b>
+														{% endif %}
+													 </td>
+													<td class="text-center">
+														<a href="{% url 'adminPanel:view_trades' trade.id %}" title="Edit" class="gray-s"><i class="uil uil-eye"></i></a>
+													 
+													</td>
+												</tr>
+
+												{% endfor %}
+
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="pills-my-purchases" role="tabpanel">
+									<div class="table-responsive mt-30">
+										<table class="table ucp-table">
+											<thead class="thead-s">
+												<tr>
+													<th class="text-center" scope="col">Trade ID.</th>
+													<th class="text-center" scope="col">Publish Date</th>
+													<th class="text-center" scope="col">Traders Name</th>
+													<th class="text-center" scope="col">Traders Email</th>
+													<th class="text-center" scope="col">Total Amount</th>
+													<th class="text-center" scope="col">Status</th>
+													<th class="text-center" scope="col">Action</th>
+												</tr>
+											</thead>
+											<tbody>
+												{% for trade in all_trades %}
+
+												{% if trade.status == '2' %}
+												<tr>
+													<td class="text-center">{{trade.reference}}</td>
+													<td class="text-center">{{trade.created_at | date}}</td>
+													<td class="text-center">{{trade.user.username}}</td>
+													<td class="text-center">{{trade.user.email}}</td>
+													<td class="text-center">{{trade.total_amount}}</td>
+													<td class="text-center">
+														{% if trade.status == '1' %}
+														   <b class="course_pending" style="color: rgb(216, 216, 19);">Pending</b>
+														{% elif trade.status == '2' %}
+		
+													  <b class="course_success" style="color: green;">Successfull</b>
+		
+														{% else %}
+															<b class="course_active" style="color: red;">Failed</b>
+														{% endif %}
+													 </td>
+													<td class="text-center">
+														<a href="{% url 'adminPanel:view_trades' trade.id %}" title="Edit" class="gray-s"><i class="uil uil-eye"></i></a>
+													 
+													</td>
+												</tr>
+												{% endif %}
+												{% endfor %}
+
+
+											</tbody>
+										</table>
+									</div>								
+								</div>
+								<div class="tab-pane fade" id="pills-upcoming-courses" role="tabpanel">
+									<div class="table-responsive mt-30">
+										<table class="table ucp-table">
+											<thead class="thead-s">
+												<tr>
+													<th class="text-center" scope="col">Trade ID.</th>
+													<th class="text-center" scope="col">Publish Date</th>
+													<th class="text-center" scope="col">Traders Name</th>
+													<th class="text-center" scope="col">Traders Email</th>
+													<th class="text-center" scope="col">Total Amount</th>
+													<th class="text-center" scope="col">Status</th>
+													<th class="text-center" scope="col">Action</th>
+												</tr>
+											</thead>
+											<tbody>
+												{% for trade in all_trades %}
+
+												{% if trade.status == '1' %}
+												<tr>
+													<td class="text-center">{{trade.reference}}</td>
+													<td class="text-center">{{trade.created_at | date}}</td>
+													<td class="text-center">{{trade.user.username}}</td>
+													<td class="text-center">{{trade.user.email}}</td>
+													<td class="text-center">{{trade.total_amount}}</td>
+													<td class="text-center">
+														{% if trade.status == '1' %}
+														   <b class="course_pending" style="color: rgb(216, 216, 19);">Pending</b>
+														{% elif trade.status == '2' %}
+		
+													  <b class="course_success" style="color: green;">Successfull</b>
+		
+														{% else %}
+															<b class="course_active" style="color: red;">Failed</b>
+														{% endif %}
+													 </td>
+													<td class="text-center">
+														<a href="{% url 'adminPanel:view_trades' trade.id %}" title="Edit" class="gray-s"><i class="uil uil-eye"></i></a>
+													 
+													</td>
+												</tr>
+												{% endif %}
+												{% endfor %}
+
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="pills-failed-courses" role="tabpanel">
+									<div class="table-responsive mt-30">
+										<table class="table ucp-table">
+											<thead class="thead-s">
+												<tr>
+													<th class="text-center" scope="col">Trade ID.</th>
+													<th class="text-center" scope="col">Publish Date</th>
+													<th class="text-center" scope="col">Traders Name</th>
+													<th class="text-center" scope="col">Traders Email</th>
+													<th class="text-center" scope="col">Total Amount</th>
+													<th class="text-center" scope="col">Status</th>
+													<th class="text-center" scope="col">Action</th>
+												</tr>
+											</thead>
+											<tbody>
+												{% for trade in all_trades %}
+
+												{% if trade.status == '3' %}
+												<tr>
+													<td class="text-center">{{trade.reference}}</td>
+													<td class="text-center">{{trade.created_at | date}}</td>
+													<td class="text-center">{{trade.user.username}}</td>
+													<td class="text-center">{{trade.user.email}}</td>
+													<td class="text-center">{{trade.total_amount}}</td>
+													<td class="text-center">
+														{% if trade.status == '1' %}
+														   <b class="course_pending" style="color: rgb(216, 216, 19);">Pending</b>
+														{% elif trade.status == '2' %}
+		
+													  <b class="course_success" style="color: green;">Successfull</b>
+		
+														{% else %}
+															<b class="course_active" style="color: red;">Failed</b>
+														{% endif %}
+													 </td>
+													<td class="text-center">
+														<a href="{% url 'adminPanel:view_trades' trade.id %}" title="Edit" class="gray-s"><i class="uil uil-eye"></i></a>
+													 
+													</td>
+												</tr>
+												{% endif %}
+												{% endfor %}
+
+
+											</tbody>
+										</table>
+											{% if users.has_other_pages %}
+											<ul class="pagination">
+											{% if users.has_previous %}
+												<li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+											{% else %}
+												<li class="disabled"><span>&laquo;</span></li>
+											{% endif %}
+											{% for i in users.paginator.page_range %}
+												{% if users.number == i %}
+												<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+												{% else %}
+												<li><a href="?page={{ i }}">{{ i }}</a></li>
+												{% endif %}
+											{% endfor %}
+											{% if users.has_next %}
+												<li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+											{% else %}
+												<li class="disabled"><span>&raquo;</span></li>
+											{% endif %}
+											</ul>
+											{% endif %}
+									</div>
+								</div>
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+{% endblock %}
+

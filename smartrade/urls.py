@@ -15,11 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('registration', include('urls.py')),
-    path('adminPanel', include('urls.py')),
-    path('tradersPanel', include('urls.py')),
-]
+    path('registration/', include('registration.urls')),
+    path('adminPanel/', include('adminPanel.urls')),
+    path('tradersPanel/', include('tradersPanel.urls')),
+    path('', include('landing_page.urls')), 
+    path('social-auth/', include('social_django.urls', namespace="social")),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

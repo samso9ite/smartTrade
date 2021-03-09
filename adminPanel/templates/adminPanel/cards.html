@@ -1,0 +1,49 @@
+{% extends 'adminPanel/base.html' %}
+{% load static %}
+{% block content %}
+{% load humanize %}
+
+<!-- Left Sidebar End -->
+<!-- Body Start -->
+	<div class="sa4d25">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<h2 class="st_title"><i class="uil uil-star"></i> All Cards</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<div class="student_reviews">
+						<div class="row">
+								<div class="col-lg-12">
+                           <div class="card_dash1">
+                              <div class="card_dash_left1">
+                                 <i class="uil uil-card-atm"></i>
+                                 <h1>Create a new card rate</h1>
+                              </div>
+                              <div class="card_dash_right1">
+                                 <a href="{% url 'adminPanel:admin_create_card' %}"><button class="create_btn_dash">Create New Card</button></a>
+                              </div>
+                           </div>
+
+                              <div class="certicates" style="">
+                                 <div class="row">
+                                    {% if cards %}
+                                    {% for card in cards %}
+                                    <div class="col-md-4 col-sm-6">
+                                       <a href="{% url 'adminPanel:admin_edit_card' card.id %}" class="certilink__152">
+                                         <b> {{card.name}}</b>
+                                       </a>
+                                    </div>
+                                    {% endfor %}
+                                    </div>
+                                 </div>
+                              </div>
+                              {% endif %}
+								 </div>
+							</div>
+					</div>
+				</div>
+         </div>
+{% endblock %}

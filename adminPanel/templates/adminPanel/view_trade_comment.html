@@ -1,0 +1,62 @@
+{% extends 'adminPanel/base.html' %}
+{% load static %}
+{% block content %}
+	<!-- Body Start -->
+		<div class="sa4d25">
+			<div class="container-fluid">			
+				<div class="row">
+					
+					<div class="col-lg-12">
+						<h2>Comment Section</h2>
+						<div class="table-responsive">
+						
+
+						<div class="row">
+							<div class="col-lg-6"><br>
+								<div class="membership_chk_bg">
+									{% if extra_details.default_bank_details %}
+										<h4 style="color: #d1b000;">Total Amount : N<b>{{extra_details.total_amount}}</b> </h4>
+												<h4 style="color: #d1b000;"> Account Details:</h4>
+												<h5>Account Name: <b>{{details.bank_accnt_name}}</b></h5>
+												<h5>Account Number:<b> {{details.bank_accnt_number}} </b></h5>
+												<h5>Bank Name : <b> {{details.bank_name}} </b></h5>
+									
+									{% else %}
+									<h4 style="color: #d1b000;">Total Amount to Pay: N<b>{{extra_details.total_amount}}</b> </h4>
+												<h4 style="color: #d1b000;">Account Details:</h4>
+												<h5>Account Name: <b>{{extra_details.bank_accnt_name}}</b></h5>
+												<h5>Account Number:<b> {{extra_details.bank_accnt_num}} </b></h5>
+												<h5>Bank Name : <b> {{extra_details.bank_name}} </b></h5>
+									
+									{% endif %}		
+								</div>
+							</div>
+
+							<div class="col-lg-6">
+								<br>
+								<div class="membership_chk_bg">
+									<h3  style="color: #d1b000;"> Admin's Comment</h3>
+									{% if trade_comment %}
+										{% for admin_comment in trade_comment %}
+											<h5> {{admin_comment.comment}}</h4>
+										{% endfor %}			
+									{% endif %}
+									</div>	
+								</div>
+
+							
+
+							{% if images %}
+							{% for image in images %}
+								<div class="bg_blog2">
+									<a href="{{image.comment_img.url}}" download>
+										<img src="{{image.comment_img.url}}" 	style="width:75%;height:75%" />
+									</a>
+								</div>
+								{% endfor %}	
+							{% endif %}
+					</div>						
+				</div>
+
+				
+	{% endblock %}
