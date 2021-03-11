@@ -5,7 +5,8 @@ class tradersProfileForm(forms.ModelForm):
     
       class Meta:
         model= ProfileDetails
-        fields = ('first_name', 'last_name', 'phone_number', 'profession', 'bank_accnt_number', 'bank_accnt_name', 'bank_name', 'profile_img')
+        fields = ('first_name', 'last_name', 'phone_number', 'profession', 'bank_accnt_number', 'bank_accnt_name', 'bank_name', 'referred_by')
+
 
 class sendFeedBackForm(forms.ModelForm):
 

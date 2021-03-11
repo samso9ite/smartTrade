@@ -1,45 +1,124 @@
 {% extends 'landing_page/base.html' %}
 {% load static %}
 {% block content %}
-			<!-- banner_section - start
+			<!-- slider_section - start
 			================================================== -->
-			<section class="banner_section home_two_banner clearfix">
-				<div class="container">
-					<div class="row align-items-center justify-content-lg-between">
+			<section class="slider_section home_three_slider clearfix">
+				<div class="main_slider owl-carousel owl-theme clearfix">
 
-						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 order-last">
-							<div class="banner_image scene">
-								<div class="image_1 wow fadeInUp2" data-wow-delay=".1s">
-									<img class="layer" data-depth="0.2" src="{% static 'landing_page/assets/images/undraw_business_deal_cpi9.svg' %}" alt="image_not_found">
+					<div class="item" data-background="{% static 'landing_page/assets/images/slider/bg_01.jpg' %}">
+						<div class="container">
+							<div class="row align-items-center justify-content-lg-between justify-content-md-center justify-content-sm-center">
+								<div class="col-lg-5 col-md-8 col-sm-12 col-xs-12 order-last">
+									<div class="slider_image">
+										<img src="{% static 'landing_page/assets/images/smartrade/authentication-2.svg' %}" alt="image_not_found">
+									</div>
 								</div>
-								<div class="image_2 wow fadeInUp2" data-wow-delay=".2s">
-									<img class="layer" data-depth="0.3" src="{% static 'landing_page/assets/images/undraw_business_deal_cpi9.svg' %}" alt="image_not_found">
+
+								<div class="col-lg-7 col-md-8 col-sm-12 col-xs-12">
+									<div class="slider_content text-white">
+										<h4 class="small_title">Welcome to Smartrade</h4>
+										<h3 class="item_title text-uppercase text-white mb-0">Gift Card Trading</h3>
+										<p>
+											Easy and hassle free gift card trading platform where security is our priority
+										</p>
+										<ul class="btns_group ul_li clearfix">
+											<li>
+												<a class="custom_btn bg_default_orange" target="_blank" href="{% url 'registration:sign_in' %}">
+													Trade Gift Card
+													<span><i class="fal fa-arrow-right"></i></span>
+												</a>
+											</li>
+											<li>
+												<a class="custom_btn bg_default_yellow" target="_blank" href="{% url 'landing_page:all_cards' %}">
+													Gift Card Rate
+													<span><i class="fal fa-arrow-right"></i></span>
+												</a>
+											</li>
+										</ul>
+									</div>
 								</div>
-								<!-- <div class="image_3 wow fadeInUp2" data-wow-delay=".3s">
-									<img class="layer" data-depth="0.4" src="{% static 'landing_page/assets/images/undraw_business_deal_cpi9.svg ' %}" alt="image_not_found">
-								</div> -->
 							</div>
 						</div>
-
-						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-							<div class="banner_contant">
-								<h4 class="sub_title wow fadeInUp2" data-wow-delay=".2s">Welcome to Smartrade</h4>
-								<h4 class="item_title text-white wow fadeInUp2" data-wow-delay=".3s">
-									Best Gift Card Trading  Platform
-								</h4>
-								<a class="custom_btn wow fadeInUp2" data-wow-delay=".4s" target="_blank" href="{% url 'registration:sign_in' %}" style="background-color: white;
-								color:#b58326">
-									Trade Gift Card
-									<span style="background-color:#b58326; color: white;"><i class="fal fa-arrow-right"></i></span>
-								</a>
-								<span class="decoration_text wow fadeIn" data-wow-delay=".1s"></span>
-							</div>
-						</div>
-						
 					</div>
+
+					<div class="item" data-background="{% static 'landing_page/assets/images/slider/bg_01.jpg' %}">
+						<div class="container">
+							<div class="row align-items-center justify-content-lg-between justify-content-md-center justify-content-sm-center">
+								<div class="col-lg-5 col-md-8 col-sm-12 col-xs-12 order-last">
+									<div class="slider_image">
+										<img src="{% static 'landing_page/assets/images/smartrade/business.svg' %}" alt="image_not_found">
+									</div>
+								</div>
+
+								<div class="col-lg-7 col-md-8 col-sm-12 col-xs-12">
+									<div class="slider_content text-white">
+										<h4 class="small_title">Fully Secured Platform</h4>
+										<h3 class="item_title text-uppercase text-white mb-0">Trade & Earn Better</h3>
+										<p>
+											We Confirm card authenticity. We pay you. No stories!
+										</p>
+										<ul class="btns_group ul_li clearfix">
+											<li>
+												<a class="custom_btn bg_default_orange" target="_blank" href="{% url 'registration:sign_in' %}">
+													Trade Gift Card
+													<span><i class="fal fa-arrow-right"></i></span>
+												</a>
+											</li>
+											<li>
+												<a class="custom_btn bg_default_yellow" target="_blank" href="{% url 'landing_page:all_cards' %}">
+													Gift Card Rate
+													<span><i class="fal fa-arrow-right"></i></span>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="item" data-background="{% static 'landing_page/assets/images/slider/bg_01.jpg' %}">
+						<div class="container">
+							<div class="row align-items-center justify-content-lg-between justify-content-md-center justify-content-sm-center">
+								<div class="col-lg-5 col-md-8 col-sm-12 col-xs-12 order-last">
+									<div class="slider_image">
+										<img src="{% static 'landing_page/assets/images/slider/img_01.png' %}" alt="image_not_found">
+									</div>
+								</div>
+
+								<div class="col-lg-7 col-md-8 col-sm-12 col-xs-12">
+									<div class="slider_content text-white">
+										<h4 class="small_title">Outstanding online support</h4>
+										<h3 class="item_title text-uppercase text-white mb-0">Cheaper & Faster</h3>
+										<p>
+											Our rates are very competitive and trading is easier and faster.
+										</p>
+										<ul class="btns_group ul_li clearfix">
+											<li>
+												<a class="custom_btn bg_default_orange" target="_blank" href="{% url 'registration:sign_in' %}">
+													Trade Gift Card
+													<span><i class="fal fa-arrow-right"></i></span>
+												</a>
+											</li>
+											<li>
+												<a class="custom_btn bg_default_yellow" target="_blank" href="{% url 'landing_page:all_cards' %}">
+													Gift Card Rate
+													<span><i class="fal fa-arrow-right"></i></span>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				
+
 				</div>
 			</section>
-			<!-- banner_section - end
+			<!-- slider_section - end
 			================================================== -->
 
 

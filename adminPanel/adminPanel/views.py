@@ -12,6 +12,7 @@ from adminPanel.forms import *
 from tradersPanel.models import *
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
+from django.db.models import F
 
 # Create your views here.
 
@@ -136,3 +137,14 @@ class EditCardRate(UpdateView):
 class DeleteCardRate(DeleteView):
     model = CardRateModel
     success_url = reverse_lazy('adminPanel:all_card_rate')
+
+@method_decorator(login_required, name="dispatch")
+class MaturedPoints(ListView):
+    model = ProfileDetails
+    template_name = 'adminPanel/matured_points.html'
+    context_object_name = 'point'
+
+    # def get_queryset(self):
+    #     matured_points = ProfileDetails.objects.filter(referral_point__gte=100)
+    #     print(matured_points)
+    #     return matured_points

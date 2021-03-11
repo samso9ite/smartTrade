@@ -12,6 +12,7 @@ from django.http import JsonResponse
 from django.contrib import messages
 from django.db import IntegrityError
 from django.shortcuts import get_object_or_404
+from django.db.models import F
 
 
 
@@ -21,9 +22,10 @@ def dashboard(request):
    pending_transactions = MainTradeModel.objects.filter(status='1',user=request.user.id).count()
 
    all_trades =  MainTradeModel.objects.filter(user=request.user.id).order_by('-id')[:20]
+   profile = ProfileDetails.objects.get(User_idx=request.user.id)
 
    return render(request,'tradersPanel/trader_dashboard.html',
-            {'all_trades':all_trades,'total_transactions':total_transactions,'pending_transactions':pending_transactions})
+            {'all_trades':all_trades,'total_transactions':total_transactions,'pending_transactions':pending_transactions, 'profile':profile})
 
 # Create your views here.
 @method_decorator(login_required, name='dispatch')
@@ -38,14 +40,22 @@ class ProfileCreationView(SuccessMessageMixin, CreateView):
         user = self.request.user
         form.instance.User = user
         form.instance.updated = True
+        print(form.instance.referred_by)
+        referral_code =  ProfileDetails.objects.filter(referral_code=form.instance.referred_by)
+        referral_code.update(referral_point=F('referral_point')+5)
+        # record.save()
         
         return super().form_valid(form)
+    
+    def get_object(self):
+        referral_code =  get_object_or_404(ProfileDetails, referral_code=self.req)
+        print(referral_code)
 
 @method_decorator(login_required, name="dispatch")
 class UpdateProfileView(SuccessMessageMixin, UpdateView):
     model = ProfileDetails
     form_class = tradersProfileForm
-    template_name = 'tradersPanel/setting.html'
+    template_name = 'tradersPanel/update_profile.html'
     context_object_name = 'update_data'
     success_url = reverse_lazy('tradersPanel:dashboard')
     success_message = "Profile Updated Successfully"

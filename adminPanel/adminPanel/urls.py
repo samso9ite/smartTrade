@@ -16,6 +16,7 @@ urlpatterns =[
    path("all_card_rate", views.AllCardRate.as_view(), name="all_card_rate"),
    path("edit_rate/<int:id>", views.EditCardRate.as_view(), name="edit_rate"),
    path("delete_rate/<pk>", views.DeleteCardRate.as_view(), name="delete_rate"),
-   path("approve_testimonial/<int:id>", views.approve_testimonial, name="approve_testimonial")
+   path("approve_testimonial/<int:id>", views.approve_testimonial, name="approve_testimonial"),
+   path("matured_points/", views.MaturedPoints.as_view(), name="matured_point"),
 ]
     

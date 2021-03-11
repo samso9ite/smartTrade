@@ -62,8 +62,11 @@ class ProfileDetails(models.Model):
     profession = models.CharField(max_length=50)
     bank_accnt_number = models.CharField(max_length=50)
     bank_accnt_name = models.CharField(max_length=100)
-    bank_name = models.CharField(max_length=50)
+    bank_name = models.CharField(max_length=50) 
+    referred_by = models.CharField(max_length=8, blank=True, null=True)
+    referral_code = models.CharField(max_length=8, default=uuid.uuid4,unique=True)
     profile_img = models.ImageField(upload_to='images/profImg',  null=True, blank=True)
+    referral_point = models.IntegerField(blank=True, default=0)
 
 class sendFeedBackModel(models.Model):
     User = models.OneToOneField(User, on_delete=models.CASCADE)

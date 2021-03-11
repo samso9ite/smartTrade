@@ -138,11 +138,7 @@
 								</a>
 
 								<ul class="mobilemenu_btns_group ul_li_right clearfix">
-									<li>
-										<button type="button" class="search_btn" data-toggle="collapse" data-target="#search_body_collapse" aria-expanded="false" aria-controls="search_body_collapse">
-											<i class="fal fa-search"></i>
-										</button>
-									</li>
+									
 									<li>
 										<button type="button" class="mobile_menu_btn"><i class="fal fa-bars"></i></button>
 									</li>
@@ -158,7 +154,9 @@
 									</li>
 									<li><a href="{% url 'landing_page:all_cards' %}">Card Rate</a></li>
 									
-									<li><a href="{% url 'landing_page:all_testimonials' %}">Testimonials</a></li>    
+									<li><a href="{% url 'landing_page:all_testimonials' %}">Testimonials</a></li>  
+									
+									
 								</ul>
 							</nav>
 						</div>
@@ -206,7 +204,18 @@
 							</li>
 							<li><a href="{% url 'landing_page:all_cards' %}">Card Rate</a></li>
 							
-							<li><a href="{% url 'landing_page:all_testimonials' %}">Testimonials</a></li>    
+							<li><a href="{% url 'landing_page:all_testimonials' %}">Testimonials</a></li> 
+							
+							<li>
+								<a  style="background-color: white; color:#8f6d23" href="{% url 'registration:sign_in' %}">
+									{% if request.user.is_authenticated %}
+										Back To Dashboard
+									{% else %}
+										Sign In
+									{% endif %}
+									<span style="background-color:#b58326; color: white;"></span>
+								</a>
+							</li>   
 						</ul>
 					</div>
 

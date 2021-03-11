@@ -23,6 +23,7 @@
 								<div class="account_setting">
 									<h4>Your Smartrade Account</h4>
 									<p>This is your public presence on Smartrade. You need to update your account when necessary</p>
+									<h4 style="color: rgb(209 176 0);">{{request.user.username | title}} Referral Code : {{update_data.referral_code}} </h4>
 									<div class="basic_profile">
 										<div class="basic_ptitle">
 											<h4>Basic Profile</h4>
@@ -45,18 +46,6 @@
 											<div class="row">
 														
 												<div class="col-lg-8">
-													
-														<!-- <div class="form-group1 mt-30 col-md-4">
-															<label for="file5">Add Profile Image</label>
-															<div class="image-upload-wrap">
-																<input class="file-upload-input" id="file5" type="file" onchange="readURL(this);" accept="image/*">
-																<div class="drag-text">
-																  <i class="fas fa-cloud-upload-alt"></i>
-																  <h4 style="text-align: center;">Upload a profile image</h4>
-																</div>
-															</div>															
-														</div>  -->
-													
 													<div class="row">
 														
 														<div class="col-lg-6">
@@ -150,7 +139,7 @@
 														<div class="col-lg-12">
 															<div class="ui search focus mt-30">
 																<div class="ui left icon input swdh11 swdh19">
-																	<input class="prompt srch_explore" type="text" name="referred_by" value="{{update_data.referred_by}}" id="id_headline" required="" maxlength="60" placeholder="Insert code of who referred you">															
+																	<input class="prompt srch_explore" type="text" name="referred_by" value="{{update_data.referred_by}}" id="id_headline" readonly required="" maxlength="60" placeholder="Insert code of who referred you">															
 																	<div class="form-control-counter" data-purpose="form-control-counter">36</div>
 																</div>
 																<!-- <div class="help-block">Add a professional headline like, "Engineer at Cursus" or "Architect."</div> -->
