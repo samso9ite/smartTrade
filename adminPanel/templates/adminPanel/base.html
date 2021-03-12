@@ -110,61 +110,153 @@
 			<div class="left_section">
 				<ul>
 					<li class="menu--item">
-						<a href="{% url 'landing_page:home_page' %}" class="menu--link active" title="Dashboard">
+						<a href="{% url 'landing_page:home_page' %}" class="menu--link " title="Dashboard">
 							<i class="uil uil-home menu--icon"></i>
 							<span class="menu--label">Home</span>
 						</a>
 					</li>
-
-					<li class="menu--item">
-						<a href="{% url 'adminPanel:admin_dashboard' %}" class="menu--link active" title="Dashboard">
-							<i class="uil uil-apps menu--icon"></i>
-							<span class="menu--label">Dashboard</span>
-						</a>
-					</li>
+					{% if 'admin_dashboard' in request.path %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:admin_dashboard' %}" class="menu--link active" title="Dashboard">
+								<i class="uil uil-apps menu--icon"></i>
+								<span class="menu--label">Dashboard</span>
+							</a>
+						</li>
+					{% else %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:admin_dashboard' %}" class="menu--link" title="Dashboard">
+								<i class="uil uil-apps menu--icon"></i>
+								<span class="menu--label">Dashboard</span>
+							</a>
+						</li>
+					{% endif %}
 					
-					<li class="menu--item">
-						<a href="{% url 'adminPanel:admin_create_card' %}" class="menu--link" title="Create Course">
+					{% if 'admin_create_card' in request.path %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:admin_create_card' %}" class="menu--link active" title="Create Course">
+								<i class='uil uil-card-atm menu--icon'></i>
+								<span class="menu--label">Add new Card</span>
+							</a>
+						</li>
+					{% else %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:admin_create_card' %}" class="menu--link" title="Create Course">
+								<i class='uil uil-card-atm menu--icon'></i>
+								<span class="menu--label">Add new Card</span>
+							</a>
+						</li>
+					{% endif %}
+
+					{% if 'set_card_rate' in request.path %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:set_card_rate' %}" class="menu--link active" title="Create Course">
+								<i class='uil uil-card-atm menu--icon'></i>
+								<span class="menu--label">Add new Card Rate</span>
+							</a> 	
+						</li>
+					{% else %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:set_card_rate' %}" class="menu--link" title="Create Course">
+								<i class='uil uil-card-atm menu--icon'></i>
+								<span class="menu--label">Add new Card Rate</span>
+							</a> 	
+						</li>
+					{% endif %}
+					{% if 'view_cards' in request.path %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:admin_view_cards' %}" class="menu--link active" title="Statements">
 							<i class='uil uil-card-atm menu--icon'></i>
-							<span class="menu--label">Add new Card</span>
-						</a>
-					</li>
-					<li class="menu--item">
-						<a href="{% url 'adminPanel:set_card_rate' %}" class="menu--link" title="Create Course">
+							<span class="menu--label">All Cards</span>
+							</a>
+						</li>
+					{% else %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:admin_view_cards' %}" class="menu--link" title="Statements">
 							<i class='uil uil-card-atm menu--icon'></i>
-							<span class="menu--label">Add new Card Rate</span>
-						</a> 	
-					</li>
-					<li class="menu--item">
-						<a href="{% url 'adminPanel:admin_view_cards' %}" class="menu--link" title="Statements">
-						  <i class='uil uil-card-atm menu--icon'></i>
-						  <span class="menu--label">All Cards</span>
-						</a>
-					</li>
-					<li class="menu--item">
-						<a href="{% url 'adminPanel:all_card_rate' %}" class="menu--link" title="Statements">
-						  <i class='uil uil-card-atm menu--icon'></i>
-						  <span class="menu--label">All Card Rate</span>
-						</a>
-					</li>
-					<li class="menu--item">
-						<a href="{% url 'adminPanel:admin_view_transactions' %}" class="menu--link" title="Statements">
-						  <i class='uil uil-file-alt menu--icon'></i>
-						  <span class="menu--label">Transactions</span>
-						</a>
-					</li>
-					<li class="menu--item">
-						<a href="{% url 'adminPanel:admin_view_feedback' %}" class="menu--link" title="Testimonials">
-						  <i class='uil uil-star menu--icon'></i>
-						  <span class="menu--label">Feedback</span>
-						</a>
-					</li>
-					<li class="menu--item">
-						<a href="{% url 'adminPanel:admin_view_testimonial' %}" class="menu--link" title="Testimonials">
-						  <i class='uil uil-star menu--icon'></i>
-						  <span class="menu--label">Testimonials</span>
-						</a>
-					</li>
+							<span class="menu--label">All Cards</span>
+							</a>
+						</li>
+					{% endif %}
+
+					{% if 'all_card_rate' in request.path %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:all_card_rate' %}" class="menu--link active" title="Statements">
+							<i class='uil uil-card-atm menu--icon'></i>
+							<span class="menu--label">All Card Rate</span>
+							</a>
+						</li>
+					{% else %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:all_card_rate' %}" class="menu--link" title="Statements">
+							<i class='uil uil-card-atm menu--icon'></i>
+							<span class="menu--label">All Card Rate</span>
+							</a>
+						</li>
+					{% endif %}
+
+					{% if 'view_transactions' in request.path %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:admin_view_transactions' %}" class="menu--link active" title="Statements">
+							<i class='uil uil-file-alt menu--icon'></i>
+							<span class="menu--label">Transactions</span>
+							</a>
+						</li>
+					{% else %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:admin_view_transactions' %}" class="menu--link " title="Statements">
+							<i class='uil uil-file-alt menu--icon'></i>
+							<span class="menu--label">Transactions</span>
+							</a>
+						</li>
+					{% endif %}
+
+					{% if 'view_feedback' in request.path %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:admin_view_feedback' %}" class="menu--link active" title="Testimonials">
+							<i class='uil uil-star menu--icon'></i>
+							<span class="menu--label">Feedback</span>
+							</a>
+						</li>
+					{% else %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:admin_view_feedback' %}" class="menu--link" title="Testimonials">
+							<i class='uil uil-star menu--icon'></i>
+							<span class="menu--label">Feedback</span>
+							</a>
+						</li>
+					{% endif %}
+
+					{% if 'view_testimonials' in request.path %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:admin_view_testimonial' %}" class="menu--link active" title="Testimonials">
+							<i class='uil uil-star menu--icon'></i>
+							<span class="menu--label">Testimonials</span>
+							</a>
+						</li>
+					{% else %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:admin_view_testimonial' %}" class="menu--link" title="Testimonials">
+							<i class='uil uil-star menu--icon'></i>
+							<span class="menu--label">Testimonials</span>
+							</a>
+						</li>
+					{% endif %}
+
+					{% if 'matured_points' in request.path %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:matured_points' %}" class="menu--link active" title="Testimonials">
+							<i class='uil uil-star menu--icon'></i>
+							<span class="menu--label">Matured Points</span>
+							</a>
+						</li>
+					{% else %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:matured_points' %}" class="menu--link " title="Testimonials">
+							<i class='uil uil-star menu--icon'></i>
+							<span class="menu--label">Matured Points</span>
+							</a>
+						</li>
+					{% endif %}
 					
 				</ul>
 			</div>

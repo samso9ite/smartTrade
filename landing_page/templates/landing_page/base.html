@@ -134,7 +134,7 @@
 						<div class="col-lg-3">
 							<div class="brand_logo">
 								<a href="{% url 'landing_page:home_page' %}">
-									<img src="{% static 'landing_page/assets/images/smartrade/logo.png' %}" srcset="assets/images/logo/logo_01_2x.png 2x' %}" alt="logo_not_found">
+									<img src="{% static 'landing_page/assets/images/smartrade/logo_white.png' %}" srcset="assets/images/logo/logo_01_2x.png 2x' %}" alt="logo_not_found">
 								</a>
 
 								<ul class="mobilemenu_btns_group ul_li_right clearfix">
@@ -149,12 +149,22 @@
 						<div class="col-lg-6">
 							<nav class="main_menu clearfix">
 								<ul class="ul_li_center clearfix">
-									<li class="active has_child">
-										<a href="{% url 'landing_page:home_page' %}">Home</a>
-									</li>
-									<li><a href="{% url 'landing_page:all_cards' %}">Card Rate</a></li>
 									
-									<li><a href="{% url 'landing_page:all_testimonials' %}">Testimonials</a></li>  
+										<li class="active">
+											<a href="{% url 'landing_page:home_page' %}">Home</a>
+										</li>
+								
+									{% if 'all_cards' in request.path or 'card_rate' in request.path %}
+										<li class="active"><a href="{% url 'landing_page:all_cards' %}">Card Rate</a></li>
+									{% else %}
+										<li><a href="{% url 'landing_page:all_cards' %}">Card Rate</a></li>
+									{% endif %}
+
+									{% if 'all_testimonials' in request.path %}
+										<li class="active"><a href="{% url 'landing_page:all_testimonials' %}">Testimonials</a></li> 
+									{% else %}
+										<li ><a href="{% url 'landing_page:all_testimonials' %}">Testimonials</a></li>
+									{% endif %}
 									
 									
 								</ul>

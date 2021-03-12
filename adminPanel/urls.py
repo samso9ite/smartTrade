@@ -20,6 +20,7 @@ urlpatterns =[
    path('list_trade/<int:id>', views.viewTrades, name="view_trades"),
    path('approve_trade/<int:id>', views.setTradeStatus, name="approve_trade"),
    path('decline_trade/<int:id>', views.setTradeStatus, name="decline_trade"),
-   path('view_trade_comment/<int:id>', views.view_trade_comment, name="view_trade_comment")
+   path('view_trade_comment/<int:id>', views.view_trade_comment, name="view_trade_comment"),
+   path("matured_points/", views.MaturedPoints.as_view(), name="matured_points"),
 ]
     

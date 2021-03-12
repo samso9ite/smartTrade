@@ -33,7 +33,10 @@
 													<p>There were some errors in the information you entered. Please correct the following:</p>
 													<ul>
 														{% for field in form %}
-															{% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+															{% if field.errors %}
+															<div class="alert alert-info">
+																<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+															</div>
 														{% endfor %}
 													</ul>
 												</div>
@@ -122,7 +125,7 @@
 														<div class="col-lg-12">
 															<div class="ui search focus mt-30">
 																<div class="ui left icon input swdh11 swdh19">
-																	<input class="prompt srch_explore" type="number" name="bank_accnt_number" value="{{update_data.bank_accnt_number}}" id="id_headline" required="" maxlength="60" placeholder="Bank Account Number">															
+																	<input class="prompt srch_explore" type="number" name="bank_accnt_number" value="{{update_data.bank_accnt_number}}" id="id_headline" maxlength="60" placeholder="Bank Account Number">															
 																	<div class="form-control-counter" data-purpose="form-control-counter">36</div>
 																</div>
 																<!-- <div class="help-block">Add a professional headline like, "Engineer at Cursus" or "Architect."</div> -->
@@ -150,7 +153,7 @@
 														<div class="col-lg-12">
 															<div class="ui search focus mt-30">
 																<div class="ui left icon input swdh11 swdh19">
-																	<input class="prompt srch_explore" type="text" name="referred_by" value="{{update_data.referred_by}}" id="id_headline" required="" maxlength="60" placeholder="Insert code of who referred you">															
+																	<input class="prompt srch_explore" type="text" name="referred_by" value="{{update_data.referred_by}}" id="id_headline"  maxlength="60" placeholder="Insert code of who referred you">															
 																	<div class="form-control-counter" data-purpose="form-control-counter">36</div>
 																</div>
 																<!-- <div class="help-block">Add a professional headline like, "Engineer at Cursus" or "Architect."</div> -->

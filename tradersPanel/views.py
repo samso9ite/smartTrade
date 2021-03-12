@@ -13,18 +13,22 @@ from django.contrib import messages
 from django.db import IntegrityError
 from django.shortcuts import get_object_or_404
 from django.db.models import F
-
-
+from django.core import mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 @login_required
 def dashboard(request):
-   total_transactions = MainTradeModel.objects.filter(user=request.user.id).count()
-   pending_transactions = MainTradeModel.objects.filter(status='1',user=request.user.id).count()
+    total_transactions = MainTradeModel.objects.filter(user=request.user.id).count()
+    pending_transactions = MainTradeModel.objects.filter(status='1',user=request.user.id).count()
 
-   all_trades =  MainTradeModel.objects.filter(user=request.user.id).order_by('-id')[:20]
-   profile = ProfileDetails.objects.get(User_idx=request.user.id)
+    all_trades =  MainTradeModel.objects.filter(user=request.user.id).order_by('-id')[:20]
+    try:
+        profile = ProfileDetails.objects.get(User_id=request.user.id)
+    except ProfileDetails.DoesNotExist:
+        profile=None
 
-   return render(request,'tradersPanel/trader_dashboard.html',
+    return render(request,'tradersPanel/trader_dashboard.html',
             {'all_trades':all_trades,'total_transactions':total_transactions,'pending_transactions':pending_transactions, 'profile':profile})
 
 # Create your views here.
@@ -40,10 +44,8 @@ class ProfileCreationView(SuccessMessageMixin, CreateView):
         user = self.request.user
         form.instance.User = user
         form.instance.updated = True
-        print(form.instance.referred_by)
         referral_code =  ProfileDetails.objects.filter(referral_code=form.instance.referred_by)
         referral_code.update(referral_point=F('referral_point')+5)
-        # record.save()
         
         return super().form_valid(form)
     
@@ -142,13 +144,20 @@ def create_trade(request):
         post_data.update({'user':request.user.id,'trade':main_trade.id})
         form = TradeForm(post_data)
         if form.is_valid():
-           res = form.save()
-           all_images = request.FILES.getlist('image[]')
+            res = form.save()
+            all_images = request.FILES.getlist('image[]')
  
-           for image in all_images:
-               ImageModel.objects.create(image=image,trade_line=main_trade.id)
-           messages.success(request,"Trade Created")
-           return JsonResponse({'status':True,'message':'Trade Created'})
+            for image in all_images:
+                ImageModel.objects.create(image=image,trade_line=main_trade.id)
+            messages.success(request,"Trade Created")
+            subject = 'A new trade has been created'
+            html_message = render_to_string('tradersPanel/mail_template.html', {'context': 'values'})
+            plain_message = strip_tags(html_message)
+            from_email = 'From <info@smartrade.ng>'
+            to = 'samso9ite@gmail.com'
+
+            mail.send_mail(subject, plain_message, from_email, [to], html_message=html_message)
+            return JsonResponse({'status':True,'message':'Trade Created'})
         else:
             return JsonResponse({'status': False, 'message': form.errors})
 

@@ -27,46 +27,30 @@
                                      <thead class="thead-s">
                                        <tr>
                                           <th>#</th>
-                                          <th>Reference</th>
+                                          <th>Referral Code</th>
                                           <th>Traders Name</th>
                                           <th>Traders Email</th>
-                                          <th>Trade Total Amount</th>
-                                          <th>Trade Status</th>
-                                          <th>View Trade</th>
+                                          <th>Traders Number</th>
+                                          <th>Total Point</th>
+                                         
                                        </tr>
                                     </thead>
                                     <tbody>
 
 
 
-                                    {% if trades %}
+                                    {% if matured_points %}
+                                       {% for matured_point in matured_points %}
 
-
-                                    {% for trade in trades %}
-
-                                       <tr>
-
-                                             <td>{{ forloop.counter }}</td>
-                                          <td>{{trade.reference}}</td>
-                                           <td>{{trade.user.username}}</td>
-                                            <td>{{trade.user.email}}</td>
-                                             <td>N{{trade.total_amount}}</td>
-                                             <td>
-                                                {% if trade.status == '1' %}
-                                                   <b class="course_pending" style="color: rgb(216, 216, 19);">Pending</b>
-                                                {% elif trade.status == '2' %}
-
-                                              <b class="course_success" style="color: green;">Successfull</b>
-
-                                                {% else %}
-                                                    <b class="course_active" style="color: red;">Failed</b>
-                                                {% endif %}
-                                             </td>
-                                             <td >
-														<a href="{% url 'adminPanel:view_trades' trade.id %}" title="Edit" class="gray-s"><i class="uil uil-eye"></i></a>
-													 
-													</td>
-                                      </tr>
+                                    <tr>
+                                       <td>{{ forloop.counter }}</td>
+                                          <td>{{matured_point.referral_code}}</td>
+                                           <td>{{matured_point.User.username}}</td>
+                                            <td>{{matured_point.User.email}}</td>
+                                             <td>{{matured_point.phone_number}}</td>
+                                             <td>{{matured_point.referral_point}}</td>
+                                          <td > </td>
+												  </tr>
                                        
                                        {% endfor %}
                                     {% endif %}

@@ -5,6 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from tradersPanel.models import ProfileDetails
+
 
 # Create your views here.
 def signUpView(request):
@@ -33,10 +35,12 @@ def loginView(request):
             if user:
                 if user.is_staff is not None:
                     login(request, user)
-                    if user.is_staff is False:
+                    if user.is_staff is False and ProfileDetails.objects.filter(User_id=request.user.id).exists():
                         return HttpResponseRedirect(reverse('tradersPanel:dashboard'))
-                    else:
+                    elif user.is_staff:
                         return HttpResponseRedirect(reverse('adminPanel:admin_dashboard'))
+                    else:
+                       return HttpResponseRedirect(reverse('tradersPanel:profile_settings')) 
                 else:
                     messages.error(request, 'This is not working')
             else:

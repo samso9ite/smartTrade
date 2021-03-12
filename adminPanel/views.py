@@ -22,6 +22,7 @@ def dashboard(request):
     total_transactions = MainTradeModel.objects.all().count()
     pending_transactions = MainTradeModel.objects.filter(status='1').count()
     all_trades =  MainTradeModel.objects.all().order_by('-id')[:20]
+    matured_points = ProfileDetails.objects.filter(referral_point__gte=10).count()
 
     page = request.GET.get('page', 1)
     paginator = Paginator(all_trades, 10)
@@ -32,7 +33,7 @@ def dashboard(request):
     except EmptyPage:
         users = paginator.page(paginator.num_pages)
     return render(request,'adminPanel/admin_dashboard.html',
-            {'all_trades':all_trades,'total_users':total_users,'total_transactions':total_transactions,'pending_transactions':pending_transactions})
+            {'all_trades':all_trades,'total_users':total_users,'total_transactions':total_transactions,'pending_transactions':pending_transactions, 'matured_points':matured_points})
 
 
 @method_decorator(login_required, name="dispatch")
@@ -43,15 +44,12 @@ class CreateCardView(SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('adminPanel:admin_view_cards')
     success_message = "Card Created"
 
-
-
 @method_decorator(login_required, name='dispatch')
 class AllCardView(ListView):
     model = TradeCardTypeModel
     context_object_name = "cards"
     template_name = "adminPanel/cards.html"
     ordering =['-id']
-
 
 @method_decorator(login_required, name='dispatch')
 class UpdateCardDetails(UpdateView):
@@ -196,3 +194,14 @@ def view_trade_comment(request, id):
         details = ProfileDetails.objects.get(User_id=extra_details.user_id)
     return render(request, 'adminPanel/view_trade_comment.html', {'trades':trades, 'trade_comment':trade_comment, 'images':images, 'extra_details':extra_details, 'details':details})  
  
+@method_decorator(login_required, name="dispatch")
+class MaturedPoints(ListView):
+    model = ProfileDetails
+    template_name = 'adminPanel/matured_points.html'
+    context_object_name = 'matured_points'
+    paginate_by = 10
+
+    def get_queryset(self):
+        matured_points = ProfileDetails.objects.filter(referral_point__gte=10)
+        print(matured_points)
+        return matured_points
