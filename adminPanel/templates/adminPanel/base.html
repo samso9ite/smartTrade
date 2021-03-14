@@ -130,7 +130,21 @@
 							</a>
 						</li>
 					{% endif %}
-					
+					{% if 'all_users' in request.path %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:all_users' %}" class="menu--link active" title="Users">
+								<i class="uil uil-user menu--icon"></i>
+								<span class="menu--label">All Users</span>
+							</a>
+						</li>
+					{% else %}
+						<li class="menu--item">
+							<a href="{% url 'adminPanel:all_users' %}" class="menu--link" title="Users">
+								<i class="uil uil-user menu--icon"></i>
+								<span class="menu--label">All Users</span>
+							</a>
+						</li>
+					{% endif %}
 					{% if 'admin_create_card' in request.path %}
 						<li class="menu--item">
 							<a href="{% url 'adminPanel:admin_create_card' %}" class="menu--link active" title="Create Course">

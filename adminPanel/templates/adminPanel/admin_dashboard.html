@@ -12,16 +12,18 @@
 						<h2 class="st_title"><i class="uil uil-apps"></i> Admin Dashboard</h2>
 					</div>
 					<div class="col-xl-3 col-lg-6 col-md-6">
-						<div class="card_dash">
-							<div class="card_dash_left">
-								<h5>Total Users</h5>
-								<h2>{{total_users}}</h2>
-								<span class="crdbg_1">Users </span>
+						<a href="{% url 'adminPanel:all_users' %}">
+							<div class="card_dash">
+								<div class="card_dash_left">
+									<h5>Total Users</h5>
+									<h2>{{total_users}}</h2>
+									<span class="crdbg_1">Users </span>
+								</div>
+								<div class="card_dash_right">
+									<img src="images/dashboard/promotion.svg" alt="">
+								</div>
 							</div>
-							<div class="card_dash_right">
-								<img src="images/dashboard/promotion.svg" alt="">
-							</div>
-						</div>
+						</a>
 					</div>
 					<div class="col-xl-3 col-lg-6 col-md-6">
 						<div class="card_dash">

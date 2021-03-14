@@ -168,6 +168,10 @@ class AllCardView(ListView):
     template_name = "tradersPanel/cards.html"
     ordering = '-id'
 
+    def get_queryset(self):
+        cards = TradeCardTypeModel.objects.filter(is_active=True)
+        return cards
+
 @login_required
 def trade_calculator(request, id):
     bank_details =''

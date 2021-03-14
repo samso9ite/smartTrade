@@ -22,5 +22,7 @@ urlpatterns =[
    path('decline_trade/<int:id>', views.setTradeStatus, name="decline_trade"),
    path('view_trade_comment/<int:id>', views.view_trade_comment, name="view_trade_comment"),
    path("matured_points/", views.MaturedPoints.as_view(), name="matured_points"),
+   path("all_users", views.AllUsers.as_view(), name="all_users"), 
+   path("delete_card/<int:id>", views.deleteCard, name="delete_card")
 ]
     

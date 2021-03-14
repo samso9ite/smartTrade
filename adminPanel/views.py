@@ -205,3 +205,20 @@ class MaturedPoints(ListView):
         matured_points = ProfileDetails.objects.filter(referral_point__gte=10)
         print(matured_points)
         return matured_points
+@method_decorator(login_required, name="dispatch")
+class AllUsers(ListView):
+    model = ProfileDetails
+    template_name = "adminPanel/users.html"
+    context_object_name = "all_users"
+    paginate_by = 20
+
+@method_decorator(login_required, name="dispatch")
+class DeleteCard(DeleteView):
+    model = TradeCardTypeModel
+    success_url = reverse_lazy('adminPanel:view_cards')
+
+@login_required
+def deleteCard(request, id):
+    card = TradeCardTypeModel.objects.get(id=id)
+    card.delete()
+    return HttpResponseRedirect(reverse_lazy('adminPanel:admin_view_cards'))

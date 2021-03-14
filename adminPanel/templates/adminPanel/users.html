@@ -1,0 +1,98 @@
+{% extends 'adminPanel/base.html' %}
+{% load static %}
+{% block content %}
+{% load humanize %}
+
+<!-- Left Sidebar End -->
+<!-- Body Start -->
+	<div class="sa4d25">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<h2 class="st_title"><i class="uil uil-user"></i> Fully Registered Users</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<div class="student_reviews">
+						<div class="row">
+							<div class="col-lg-12	">
+								<!-- <div class="col-lg-7"> -->
+								<div class="review_right">
+									
+								</div>
+ 
+                              <div class="table-responsive">
+                                 <table class="table table-border   ucp-table">
+                                     <thead class="thead-s">
+                                       <tr>
+                                          <th>#</th>
+                                          <th>Referral Code</th>
+                                          <th>Traders Name</th>
+                                          <th>Traders Email</th>
+                                          <th>Traders Number</th>
+                                          <th>Account Name</th>
+                                          <th>Account Number </th>
+                                          <th>Bank Name</th>
+                                          <th>Total Point</th>
+                                         
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+
+
+
+                                    {% if all_users %}
+                                       {% for user in all_users %}
+
+                                    <tr>
+                                       <td>{{ forloop.counter }}</td>
+                                          <td>{{user.referral_code}}</td>
+                                           <td>{{user.User.username}}</td>
+                                            <td>{{user.User.email}}</td>
+                                             <td>{{user.phone_number}}</td>
+                                             <td>{{user.bank_accnt_name}}</td>
+                                             <td>{{user.bank_accnt_number}}</td>
+                                             <td>{{user.bank_name}}</td>
+                                             <td>{{user.referral_point}} points</td>
+                                          <td > </td>
+												  </tr>
+                                       
+                                       {% endfor %}
+                                    {% endif %}
+
+                                    </tbody>
+                                 </table>
+
+                                 {% if is_paginated %}
+                                    <ul class="pagination pagination-lg">
+                                       {% if page_obj.has_previous %}
+                                          <li style="padding: 8px; border-color: 1px solid #d1b000;"><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                                       {% else %}
+                                          <li class="disabled"  style="padding: 8px; border: 1px solid #d1b000;"><span>&laquo;</span></li>
+                                       {% endif %}
+                                       {% for i in paginator.page_range %}
+                                          {% if page_obj.number == i %}
+                                          <li class="active"  style="padding: 8px; border: 1px solid #d1b000; background-color: #d1b000;"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                          {% else %}
+                                          <li  style="padding: 8px; border: 1px solid #d1b000;"><a href="?page={{ i }}">{{ i }}</a></li>
+                                          {% endif %}
+                                       {% endfor %}
+                                       {% if page_obj.has_next %}
+                                          <li  style="padding: 8px; border: 1px solid #d1b000;"><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                                       {% else %}
+                                          <li class="disabled"  style="padding: 8px;border: 1px solid #d1b000;"><span>&raquo;</span></li>
+                                       {% endif %}
+                                    </ul>
+                                 {% endif %}
+                              </div>
+                    
+								 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+ 
+
+{% endblock %}

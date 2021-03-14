@@ -64,15 +64,17 @@
 								</div>
 							</div>
 						</div>
-							{% if images %}
-							{% for image in images %}
-							<div class="bg_blog2">
-								<a href="{{image.image.url}}" download>
-									<img src="{{image.image.url}}" 	style="width:75%;height:75%" />
-								</a>
-							</div>
-							{% endfor %}	
-							{% endif %}
+						
+						{% if images %}
+								{% for image in images %}
+									<div class="bg_blog2">
+										<a href="{{image.image.url}}" download>
+											<img src="{{image.image.url}}" 	style="width:40%;height:40%" />
+										</a>
+									</div>
+								{% endfor %}	
+								{% endif %}
+						
 					</div>						
 				</div>
 
@@ -93,7 +95,7 @@
 					<div class="col-lg-6">
 						
 							<button data-toggle="collapse" data-target="#demo" class="add_crdit_btn mt-50" type="submit" style="background-color: red;">Trade Declined</button>
-						
+					<div class="_215td5">
 						
 						<div id="demo" class="collapse">
 							<div class="tab-content" id="myTabContent">

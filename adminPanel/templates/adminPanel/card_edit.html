@@ -32,7 +32,7 @@
 						<div class="row">
 							<div class="col-md-12">	
 								<div class="ui search focus mt-30 lbel25">
-									<label> <b>Card Type Name</b></label>
+									<label> <b>Card Type Name</b>{{object.id}}</label>
 									<div class="ui left icon input swdh11 swdh19">
 										<input class="prompt srch_explore" type="text" name="name" value="{{object.name}}" id="id_holdername" required="" maxlength="64" placeholder="Card Name">															
 									</div>
@@ -46,11 +46,21 @@
 								</div>
 							</div>
 							</div>
+							<div class="row">
                           	<div class="col-lg-12">
-								<button class="add_crdit_btn mt-50" type="submit">Add Card</button>
+								<button class="add_crdit_btn mt-50" type="submit">Update Card</button> 
+							</div>
+							
 							</div>
 							</div>
 							</form>
+							<div class="row" style="">
+								<div class="col-lg-12">
+									<a href="{% url 'adminPanel:delete_card' id=object.id %}">
+										<button class="add_crdit_btn mt-50" type="submit" style="background-color: red;">Delete Card</button>
+									</a>
+								</div>
+							</div>
 						</div>						
 					</div>	
 					</div>
