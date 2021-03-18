@@ -56,7 +56,7 @@
 											
 											</tbody>
 										</table>
-										{% if is_paginated %}
+								{% if is_paginated %}
                                     <ul class="pagination pagination-lg">
                                        {% if page_obj.has_previous %}
                                           <li style="padding: 8px; border-color: 1px solid #d1b000;"><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
@@ -76,7 +76,7 @@
                                           <li class="disabled"  style="padding: 8px;border: 1px solid #d1b000;"><span>&raquo;</span></li>
                                        {% endif %}
                                     </ul>
-                                    {% endif %}
+                                {% endif %}
 									</div>
 								</div>
 							</div>
